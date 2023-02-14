@@ -4,11 +4,18 @@
 For further reference, please consider the following sections:
 
 * [Official Apache Maven documentation](https://maven.apache.org/guides/index.html)
+<<<<<<< HEAD
 * [Spring Boot Maven Plugin Reference Guide](https://docs.spring.io/spring-boot/docs/2.7.7/maven-plugin/reference/html/)
 * [Create an OCI image](https://docs.spring.io/spring-boot/docs/2.7.7/maven-plugin/reference/html/#build-image)
 * [Spring Boot DevTools](https://docs.spring.io/spring-boot/docs/2.7.7/reference/htmlsingle/#using.devtools)
 * [Spring Data JPA](https://docs.spring.io/spring-boot/docs/2.7.7/reference/htmlsingle/#data.sql.jpa-and-spring-data)
 * [Spring Web](https://docs.spring.io/spring-boot/docs/2.7.7/reference/htmlsingle/#web)
+=======
+* [Spring Boot Maven Plugin Reference Guide](https://docs.spring.io/spring-boot/docs/2.7.7-SNAPSHOT/maven-plugin/reference/html/)
+* [Create an OCI image](https://docs.spring.io/spring-boot/docs/2.7.7-SNAPSHOT/maven-plugin/reference/html/#build-image)
+* [Spring Data JPA](https://docs.spring.io/spring-boot/docs/2.7.7-SNAPSHOT/reference/htmlsingle/#data.sql.jpa-and-spring-data)
+* [Spring Web](https://docs.spring.io/spring-boot/docs/2.7.7-SNAPSHOT/reference/htmlsingle/#web)
+>>>>>>> 352885ef00df60031d8ed210ce5483e56b472d4d
 
 ### Guides
 The following guides illustrate how to use some features concretely:
