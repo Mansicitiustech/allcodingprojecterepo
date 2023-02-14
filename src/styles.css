@@ -1,0 +1,33 @@
+/* You can add global styles to this file, and also import other style files */
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+@import '../node_modules/@syncfusion/ej2-base/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-buttons/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-calendars/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-dropdowns/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-inputs/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-lists/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-popups/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-navigations/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-angular-schedule/styles/material.css';
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+=======
+>>>>>>> 97be0521fc24c70d1891d419f71c687dec3219ae
+@import url('https://fonts.googleapis.com/css?family=Muli:400,700');
+html, body { height: 100%; }
+body { margin: 0; font-family: Arial, Helvetica, sans-serif, "Helvetica Neue", sans-serif; }
+a{text-decoration: none;}
+html{
+    font-size: 16px;
+<<<<<<< HEAD
+}
+=======
+}
+>>>>>>> 193508d28b130649fceef342a3d6417927463787
+>>>>>>> 97be0521fc24c70d1891d419f71c687dec3219ae
