@@ -1,0 +1,368 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+=======
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+>>>>>>> d50826b9e252d9603fcd85a01547e3faf950a8c5
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+<<<<<<< HEAD
+		<version>2.6.1</version>
+		<relativePath /> <!-- lookup parent from repository -->
+	</parent>
+	<groupId>com.citiustech</groupId>
+	<artifactId>CTHospital</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>CTHospital</name>
+	<description>Demo project for Spring Boot</description>
+	<properties>
+		<java.version>1.8</java.version>
+=======
+<<<<<<< HEAD
+		<version>2.6.1</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+	<groupId>com.citiustech</groupId>
+	<artifactId>microPatientModule</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>war</packaging>
+	<name>microPatientModule</name>
+	<description>Demo project for Spring Boot</description>
+	<properties>
+		<java.version>1.8</java.version>
+		<spring-cloud.version>2021.0.0</spring-cloud.version>
+=======
+<<<<<<< HEAD
+		<version>2.7.7</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+	<groupId>com.ct</groupId>
+	<artifactId>passwordLoginApp</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>passwordLoginApp</name>
+=======
+		<version>2.7.7-SNAPSHOT</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 02d1089bbde0487b6f54380cb88d68144d4fa2b1
+	<groupId>com.ct</groupId>
+	<artifactId>customerReport</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>customerReport</name>
+<<<<<<< HEAD
+=======
+	<groupId>com.phone</groupId>
+	<artifactId>phoneContactsApp</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>phoneContactsApp</name>
+>>>>>>> 5d2468c414c50c26076d36c89e122290ae6ae9bb
+=======
+>>>>>>> 02d1089bbde0487b6f54380cb88d68144d4fa2b1
+>>>>>>> 352885ef00df60031d8ed210ce5483e56b472d4d
+	<description>Demo project for Spring Boot</description>
+	<properties>
+		<java.version>1.8</java.version>
+>>>>>>> e438e6f3d8d6113ec08c1df3fdd78b65f11c614f
+>>>>>>> d50826b9e252d9603fcd85a01547e3faf950a8c5
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+<<<<<<< HEAD
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+=======
+<<<<<<< HEAD
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+=======
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+		<dependency>
+<<<<<<< HEAD
+    <groupId>org.apache.commons</groupId>
+    <artifactId>commons-lang3</artifactId>
+    <version>3.4</version>
+</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+<dependency> 
+    <groupId>org.springframework.boot</groupId> 
+    <artifactId>spring-boot-starter-validation</artifactId> 
+</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<scope>runtime</scope>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+=======
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 02d1089bbde0487b6f54380cb88d68144d4fa2b1
+		<dependency>
+    <groupId>org.apache.poi</groupId>
+    <artifactId>poi</artifactId>
+    <version>4.1.2</version>
+</dependency>
+<dependency>
+    <groupId>org.apache.poi</groupId>
+    <artifactId>poi-ooxml</artifactId>
+    <version>4.1.2</version>
+</dependency>
+<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-core -->
+<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+
+<dependency>
+    <groupId>com.github.librepdf</groupId>
+    <artifactId>openpdf</artifactId>
+    <version>1.3.8</version>
+</dependency>
+<dependency>
+<<<<<<< HEAD
+=======
+<dependency>
+>>>>>>> e438e6f3d8d6113ec08c1df3fdd78b65f11c614f
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<optional>true</optional>
+		</dependency>
+<<<<<<< HEAD
+		<!-- <dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+		</dependency> -->
+>>>>>>> d50826b9e252d9603fcd85a01547e3faf950a8c5
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<scope>runtime</scope>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+<<<<<<< HEAD
+=======
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-tomcat</artifactId>
+			<scope>provided</scope>
+		</dependency>
+=======
+		<dependency>
+    <groupId>io.springfox</groupId>
+    <artifactId>springfox-swagger2</artifactId>
+    <version>3.0.0</version>
+</dependency>
+<dependency>
+    <groupId>io.springfox</groupId>
+    <artifactId>springfox-swagger-ui</artifactId>
+    <version>2.9.2</version>
+</dependency>
+		<dependency>
+>>>>>>> 5d2468c414c50c26076d36c89e122290ae6ae9bb
+=======
+>>>>>>> 02d1089bbde0487b6f54380cb88d68144d4fa2b1
+>>>>>>> 352885ef00df60031d8ed210ce5483e56b472d4d
+>>>>>>> d50826b9e252d9603fcd85a01547e3faf950a8c5
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 02d1089bbde0487b6f54380cb88d68144d4fa2b1
+<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-oauth2-client -->
+<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-oauth2-client</artifactId>
+		</dependency>
+>>>>>>> 352885ef00df60031d8ed210ce5483e56b472d4d
+>>>>>>> d50826b9e252d9603fcd85a01547e3faf950a8c5
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<optional>true</optional>
+		</dependency>
+<<<<<<< HEAD
+		<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.11</version>
+		</dependency>
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> 5d2468c414c50c26076d36c89e122290ae6ae9bb
+=======
+>>>>>>> 02d1089bbde0487b6f54380cb88d68144d4fa2b1
+>>>>>>> 352885ef00df60031d8ed210ce5483e56b472d4d
+>>>>>>> e438e6f3d8d6113ec08c1df3fdd78b65f11c614f
+>>>>>>> d50826b9e252d9603fcd85a01547e3faf950a8c5
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+<<<<<<< HEAD
+		
+	</dependencies>
+=======
+<<<<<<< HEAD
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+	</dependencies>
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>${spring-cloud.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+=======
+<<<<<<< HEAD
+		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-mail -->
+<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-mail</artifactId>
+		</dependency>
+		
+=======
+>>>>>>> 352885ef00df60031d8ed210ce5483e56b472d4d
+	</dependencies>
+>>>>>>> e438e6f3d8d6113ec08c1df3fdd78b65f11c614f
+>>>>>>> d50826b9e252d9603fcd85a01547e3faf950a8c5
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+			</plugin>
+		</plugins>
+	</build>
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 02d1089bbde0487b6f54380cb88d68144d4fa2b1
+>>>>>>> 352885ef00df60031d8ed210ce5483e56b472d4d
+>>>>>>> d50826b9e252d9603fcd85a01547e3faf950a8c5
+				<configuration>
+					<excludes>
+						<exclude>
+							<groupId>org.projectlombok</groupId>
+							<artifactId>lombok</artifactId>
+						</exclude>
+					</excludes>
+				</configuration>
+			</plugin>
+<<<<<<< HEAD
+		</plugins>
+	</build>
+=======
+<<<<<<< HEAD
+		</plugins>
+	</build>
+=======
+<<<<<<< HEAD
+=======
+			</plugin>
+			<plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <finalName>contact-App</finalName>
+                </configuration>
+            </plugin>
+>>>>>>> 5d2468c414c50c26076d36c89e122290ae6ae9bb
+=======
+>>>>>>> 02d1089bbde0487b6f54380cb88d68144d4fa2b1
+		</plugins>
+	</build>
+	<repositories>
+		<repository>
+			<id>spring-milestones</id>
+			<name>Spring Milestones</name>
+			<url>https://repo.spring.io/milestone</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>spring-snapshots</id>
+			<name>Spring Snapshots</name>
+			<url>https://repo.spring.io/snapshot</url>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+		</repository>
+	</repositories>
+	<pluginRepositories>
+		<pluginRepository>
+			<id>spring-milestones</id>
+			<name>Spring Milestones</name>
+			<url>https://repo.spring.io/milestone</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</pluginRepository>
+		<pluginRepository>
+			<id>spring-snapshots</id>
+			<name>Spring Snapshots</name>
+			<url>https://repo.spring.io/snapshot</url>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+		</pluginRepository>
+	</pluginRepositories>
+>>>>>>> 352885ef00df60031d8ed210ce5483e56b472d4d
+>>>>>>> e438e6f3d8d6113ec08c1df3fdd78b65f11c614f
+>>>>>>> d50826b9e252d9603fcd85a01547e3faf950a8c5
+
+</project>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+<<<<<<< HEAD
+	<name>CTHospital</name>
+=======
+<<<<<<< HEAD
+	<name>microPatientModule</name>
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	<name>userDetailsApp</name>
+=======
+<<<<<<< HEAD
+>>>>>>> 69834e20888bc6c24bb486928fcb8185a250fce0
+	<name>userManagementApp</name>
+=======
+	<name>customerReport</name>
+>>>>>>> 352885ef00df60031d8ed210ce5483e56b472d4d
+<<<<<<< HEAD
+=======
+>>>>>>> c061ad24632c39bdff00501f4c71ad5cf10506f1
+>>>>>>> 69834e20888bc6c24bb486928fcb8185a250fce0
+>>>>>>> e438e6f3d8d6113ec08c1df3fdd78b65f11c614f
+>>>>>>> d50826b9e252d9603fcd85a01547e3faf950a8c5
+	<comment></comment>
+	<projects>
+	</projects>
+	<buildSpec>
+		<buildCommand>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+			<name>org.eclipse.wst.common.project.facet.core.builder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
+>>>>>>> e438e6f3d8d6113ec08c1df3fdd78b65f11c614f
+>>>>>>> d50826b9e252d9603fcd85a01547e3faf950a8c5
+			<name>org.eclipse.jdt.core.javabuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+			<name>org.springframework.ide.eclipse.core.springbuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
+>>>>>>> e438e6f3d8d6113ec08c1df3fdd78b65f11c614f
+>>>>>>> d50826b9e252d9603fcd85a01547e3faf950a8c5
+			<name>org.springframework.ide.eclipse.boot.validation.springbootbuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
+			<name>org.eclipse.m2e.core.maven2Builder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+	</buildSpec>
+	<natures>
+<<<<<<< HEAD
+		<nature>org.eclipse.jdt.core.javanature</nature>
+		<nature>org.eclipse.m2e.core.maven2Nature</nature>
+=======
+<<<<<<< HEAD
+		<nature>org.eclipse.jdt.core.javanature</nature>
+		<nature>org.eclipse.m2e.core.maven2Nature</nature>
+=======
+		<nature>org.springframework.ide.eclipse.core.springnature</nature>
+		<nature>org.eclipse.jdt.core.javanature</nature>
+		<nature>org.eclipse.m2e.core.maven2Nature</nature>
+		<nature>org.eclipse.wst.common.project.facet.core.nature</nature>
+>>>>>>> e438e6f3d8d6113ec08c1df3fdd78b65f11c614f
+>>>>>>> d50826b9e252d9603fcd85a01547e3faf950a8c5
+	</natures>
+</projectDescription>
