@@ -1,0 +1,15 @@
+com\ct\controller\UserController.class
+com\ct\model\Password.class
+com\ct\PasswordLoginAppApplication.class
+com\ct\model\User.class
+com\ct\serviceImpl\UserServiceImpl.class
+com\ct\repo\PasswordRepo.class
+com\ct\serviceImpl\UserRandomPasswordGenerator.class
+com\ct\repo\UserRepo.class
+com\ct\repo\UserRegistrationRepo.class
+com\ct\model\StatusConstants.class
+com\ct\service\UserService.class
+com\ct\exception\GlobalException.class
+com\ct\exception\ErrorMessage.class
+com\ct\model\UserRegistration.class
+com\ct\exception\EmailNotFoundException.class
