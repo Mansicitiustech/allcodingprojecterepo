@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.citiustech.SpringbootApptask1ApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 31.812 s - in com.citiustech.SpringbootApptask1ApplicationTests

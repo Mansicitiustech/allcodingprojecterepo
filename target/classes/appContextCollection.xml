@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd">
+<bean id="collections" class="com.springcore.appcontext.CollectionSpring">
+<property name="myStringList" >
+<list><value>grapes</value>
+<value>apple</value>
+<value>ornges</value>
+<value>mangos</value>
+</list></property>
+<property name="myIntSet" >
+<set><value>11</value>
+<value>12</value>
+<value>13</value>
+<value>14</value>
+</set>
+</property>
+<property name="myMap" >
+<map>
+<entry key ="name" value="tomi"></entry>
+<entry key ="name" value="vani"></entry>
+
+</map>
+</property>
+<property name="myPlayerList" >
+<list>
+<ref bean="player1" />
+<ref bean="player2" />
+<ref bean="player3" />
+</list>
+
+</property>
+<property name="myEmployeeSet" >
+<set>
+<ref bean="employee1" />
+<ref bean="employee2" />
+
+</set></property>
+<property name="properties">
+<props>
+<prop key="username">username1</prop>
+<prop key="password">password@123</prop>
+<prop key="email">email@123gmail.com</prop>
+</props></property>
+</bean>
+<bean id="player1" class="com.springcore.appcontext.Players">
+<property name="id" value="1"></property>
+<property name="name" value="rahul"></property></bean>
+<bean id="player2" class="com.springcore.appcontext.Players">
+<property name="id" value="2"></property>
+<property name="name" value="tarun"></property></bean>
+<bean id="player3" class="com.springcore.appcontext.Players">
+<property name="id" value="3"></property>
+<property name="name" value="ridhhi"></property></bean>
+
+<bean id="employee1" class="com.springcore.entity.Employee">
+<property name="firstName" value="vinita" ></property>
+<property name="lastName" value="more"></property>
+<property name="id" value="101"></property>
+<property name="salary" value="56789.90"></property>
+</bean>
+<bean id="employee2" class="com.springcore.entity.Employee">
+<property name="firstName" value="sweta" ></property>
+<property name="lastName" value="bharne"></property>
+<property name="id" value="102"></property>
+<property name="salary" value="77789.90"></property>
+</bean>
+
+
+
+</beans>
