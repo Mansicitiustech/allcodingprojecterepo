@@ -1,0 +1,314 @@
+<div class="bgimg">
+  <mat-toolbar
+    ><mat-toolbar-row>
+      <div>
+        <img
+          class="img"
+          src="/assets/images/CTHospitallogo.jpg"
+          height="35px"
+          width="100px"
+        />
+      </div>
+      <span class="flexExpand"></span>
+      <div>
+        <span class="flexExpand"></span>
+        <button mat-button class="btnabout">About us</button>
+      </div>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="20px">
+    <div
+      fxFlex="50"
+      class="left"
+      fxLayout="column"
+      fxLayoutAlign="center center"
+    >
+      <h5 class="h5">YOUR HEALTH</h5>
+      <br />
+      <h1 class="h1">IS OUR</h1>
+      <br />
+      <h1 class="h1">PRIORITY</h1>
+
+      <button mat-button class="btnlog" (click)="loginPageShow()">
+        Already registered user
+      </button>
+      <button mat-button class="btnlog" (click)="registerPageShow()">
+        New registered user
+      </button>
+    </div>
+    <div
+      *ngIf="isFormShown"
+      fxFlex="50"
+      class="right"
+      fxLayoutAlign="center center"
+    >
+      <mat-card fxLayoutAlign="center center" class="mat1"
+        ><form [formGroup]="loginForm" (ngSubmit)="login()">
+          <mat-card-content>
+            <h2 style="color: blue">Login</h2>
+
+            <mat-form-field class="full-width-input">
+              <input matInput type="email" placeholder="email/username"required formControlName="email"/>
+              <mat-hint
+              class="fielderror"
+              *ngIf="
+                (loginFormControl.email.touched || submitted) &&
+                loginFormControl.email.errors?.required
+              "
+            ></mat-hint> 
+            </mat-form-field>
+            <mat-form-field class="full-width-input">
+              <input matInput type="password" placeholder="password"formControlName="password" />
+              <mat-hint
+              class="fielderror"
+              *ngIf=" (loginFormControl.password.touched || submitted) &&
+                loginFormControl.password.errors?.required"
+            >
+              
+                </mat-hint>
+              <!-- <mat-hint *ngIf="errorMessage" class="fielderror">{{errorMessage}}</mat-hint> -->
+            </mat-form-field>
+            
+            <button
+              mat-raised-button
+              color="primary"
+              class="btn"
+              (click)="onLogin()"
+            >
+              Login
+            </button>
+            <div style="text-align: left; margin-top: 0px">
+              <mat-card-content>
+                <button mat-button class="btnlog" (click)="registerPageShow()">
+                  Register
+                </button>|
+                <a
+                style="text-decoration: none; color: blue"
+                routerLink="/forget" [state]="loginForm.value"
+                >forget password</a>
+               <!-- <button mat-button class="btnlog" (click)="changepassword()">
+                  change password
+                </button>|-->
+              </mat-card-content>
+            </div>
+          </mat-card-content>
+        </form>
+      </mat-card>
+    </div>
+    <!---  <mat-radio-group aria-label="Select an option">
+                <mat-label>Title :</mat-label>&nbsp; &nbsp;
+                <div>
+                  <mat-radio-button value="1">Mr.</mat-radio-button>
+                  <mat-radio-button value="2">Ms.</mat-radio-button>
+                  <mat-radio-button value="3">Mrs.</mat-radio-button>
+                  <mat-radio-button value="4">Dr </mat-radio-button>
+                </div> </mat-radio-group
+            -->
+
+    <div
+      *ngIf="isRegFormShown"
+      fxFlex="50"
+      class="right"
+      fxLayoutAlign="center center"
+    >
+      <mat-card class="mat2">
+        <mat-card-content
+          ><form  [formGroup]="registerForm" (ngSubmit)="submitRegister()" >
+            <h1 class="head">Registration</h1>
+            
+            <div fxLayout="row" fxLayout.xs="column" style="margin-top: 10px">
+              <div class="pad">
+                <mat-form-field appearance="fill">
+                  <mat-label>Title</mat-label>
+                  <mat-select [(ngModel)]="selectedValue" name="title"  formControlName="title">
+                    <mat-option
+                      *ngFor="let title of titles"
+                      [value]="title.value"
+                    >
+                      {{ title.viewValue }}
+                    </mat-option>
+                  </mat-select>
+                
+               
+                <mat-hint
+                class="fielderror"
+                *ngIf="
+                  (registerFormControl.title.touched || submitted) &&
+                  registerFormControl.title.errors?.required
+                "
+              >
+                title is required
+              </mat-hint> </mat-form-field>
+              </div>
+              &nbsp; &nbsp;
+              <mat-form-field appearance="fill" id="firsN" class="pad">
+                <mat-label>First Name*</mat-label>
+                <input matInput  formControlName="firstName"  [ngClass]="{ 'is-invalid': submitted && this.registerForm.controls.firstName.errors }" />
+               <!--<div *ngIf="submitted && this.registerForm.controls.firstName.errors" class="invalid-feedback">
+                  <div *ngIf="this.registerForm.controls.firstName.errors.required">First Name is required</div>
+              </div>-->
+              <mat-hint
+              class="fielderror"
+              *ngIf="
+                (registerFormControl.firstName.touched || submitted) &&
+                registerFormControl.firstName.errors?.required
+              "
+            >
+              first Name is required
+              </mat-hint>
+              </mat-form-field>
+            </div>
+
+            <div fxLayout="row" fxLayout.xs="column">
+              <mat-form-field appearance="fill" class="pad">
+                <mat-label>Last Name</mat-label>
+                <input matInput  formControlName="lastName"/> 
+                <mat-hint
+                class="fielderror"
+                *ngIf="
+                  (registerFormControl.lastName.touched || submitted) &&
+                  registerFormControl.lastName.errors?.required
+                "
+              >
+                lastName is required
+              </mat-hint>
+                </mat-form-field
+              >&nbsp; &nbsp;
+              <mat-form-field appearance="fill" class="pad">
+                <mat-label>Contact number</mat-label>
+                <input matInput   formControlName="contactNumber"/>
+                <mat-hint
+                class="fielderror"
+                *ngIf="
+                  (registerFormControl.contactNumber.touched || submitted) &&
+                  registerFormControl.contactNumber.errors?.required
+                "
+              >
+                mobile no. is required
+              </mat-hint>
+              <mat-hint
+              class="fielderror"
+              *ngIf="registerFormControl.contactNumber.errors?.minlength"
+            >
+              valid number required
+            </mat-hint>
+            <mat-hint
+            class="fielderror"
+            *ngIf="registerFormControl.contactNumber.errors?.maxlength"
+          >
+            valid number is required
+          </mat-hint>
+         
+               </mat-form-field>
+            </div>
+
+            <div fxLayout="row" fxLayout.xs="column">
+              <mat-form-field appearance="fill" class="pad date">
+                <mat-label>DOB</mat-label>
+                <input matInput [matDatepicker]="picker"  formControlName="dateOfBirth" [max]="today"/>
+                <mat-datepicker-toggle
+                  matSuffix
+                  [for]="picker"
+                ></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+                <mat-hint
+                class="fielderror"
+                *ngIf="
+                  (registerFormControl.dateOfBirth.touched || submitted) &&
+                  registerFormControl.dateOfBirth.errors?.required
+                "
+              >
+                DOB is required
+              </mat-hint> </mat-form-field
+              >&nbsp; &nbsp;
+              <div class="example-container">
+                <mat-form-field
+                  appearance="fill"
+                  class="example-full-width wid"
+                >
+                  <mat-label>Enter your email</mat-label>
+                  <input matInput  formControlName="email"  required />
+                 <!---<input matInput placeholder="google@example.com" required />-->
+                 <mat-hint
+                 class="fielderror"
+                 *ngIf="
+                   (registerFormControl.email.touched || submitted) &&
+                   registerFormControl.email.errors?.required
+                 "
+               >
+                email is required
+              </mat-hint>
+              <mat-hint
+              class="fielderror"
+              *ngIf="registerFormControl.email.errors?.email"
+            >
+              email must be valid
+            </mat-hint>
+                </mat-form-field>
+              </div>
+              
+            </div>
+            <div fxLayout="row" fxLayout.xs="column">
+              <mat-form-field appearance="fill" class="pad">
+                <mat-label>password</mat-label>
+                <input type="password" matInput  formControlName="password" /> 
+                <mat-hint
+            class="fielderror"
+            *ngIf=" (registerFormControl.password.touched || submitted) &&
+              registerFormControl.password.errors?.required"
+          >
+            password is required
+              </mat-hint>
+            <mat-hint
+              class="fielderror"
+              *ngIf="registerFormControl.password.errors?.minlength"
+            >
+              password must atleast 6 char
+            </mat-hint>
+                </mat-form-field
+              >&nbsp; &nbsp;
+              <mat-form-field appearance="fill" class="pad">
+                <mat-label>Confirm password</mat-label>
+                <input type="password"   formControlName="confirmPassword" matInput />
+                <mat-hint
+                class="fielderror"
+                *ngIf=" (registerFormControl.confirmPassword.touched || submitted) &&
+                  registerFormControl.confirmPassword.errors?.required"
+              >
+                password is required
+                  </mat-hint>
+                <!--<mat-hint
+                  class="fielderror"
+                  *ngIf="registerFormControl.confirmPassword.errors?.minlength"
+                >
+                  password must atleast 6 char
+                </mat-hint>-->
+              
+              <mat-hint class="fielderror" *ngIf="(registerFormControl.confirmPassword.minlength) || registerFormControl.confirmPassword.errors?.matching">
+                password must be match
+              </mat-hint>
+              </mat-form-field>
+            </div>
+            <!-- <button
+              mat-raised-button
+              (click)="onRegister()"
+              color="primary"
+              style="background-color: #0d5be1; width: 100%"
+              class="example-full-width"
+            >
+              Register
+            </button> -->
+            <button
+              mat-raised-button
+              color="primary"
+              style="background-color: #0d5be1; width: 100%"
+              class="example-full-width" [disabled]="registerForm.invalid"
+            >
+              Register
+            </button>
+          </form></mat-card-content
+        ></mat-card
+      >
+    </div>
+  </div>
+</div>

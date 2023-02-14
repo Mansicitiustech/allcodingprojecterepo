@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Employee.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">adminms</a> &gt; <a href="index.source.html" class="el_package">com.citiustech.admin.entity</a> &gt; <span class="el_source">Employee.java</span></div><h1>Employee.java</h1><pre class="source lang-java linenums">package com.citiustech.admin.entity;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.Date;
+import java.util.List;
+import javax.persistence.*;
+import org.springframework.format.annotation.DateTimeFormat;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.*;
+
+
+@Entity
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Table(name =&quot;Employee_Details&quot;)
+<span class="fc" id="L18">public class Employee {</span>
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name=&quot;employee_id&quot;)
+	private Long employeeId;
+	private String title;
+	private String firstName;
+	private String lastName;
+	private String gender;
+	 @JsonFormat(pattern = &quot;yyyy-MM-dd&quot;, shape = JsonFormat.Shape.STRING)
+//	@DateTimeFormat(pattern = &quot;dd/mm/yyyy&quot;)
+	private Date dateOfBirth;
+	 @JsonFormat(pattern = &quot;yyyy-MM-dd&quot;, shape = JsonFormat.Shape.STRING)
+//	@DateTimeFormat(pattern = &quot;dd/mm/yyyy&quot;)
+	private Date dateOfJoining;
+	private String email;
+	private String mobileNO;
+	private String address;
+	private String qualification;
+	private String specialisation;
+	
+<span class="fc" id="L40">	private String status=&quot;active&quot;;</span>
+<span class="fc" id="L41">	private String blockStatus=&quot;Unblock&quot;;</span>
+	@DateTimeFormat(pattern = &quot;dd-MM-yyyy HH:mm:ss&quot;)
+<span class="fc" id="L43">	private LocalDateTime dateCreated=LocalDateTime.now(); </span>
+	
+	private Long createdBy;
+	
+	@OneToOne
+	@JoinColumn(name = &quot;user_Role_Id&quot;)
+	private UserRole userRole;
+	
+	@OneToOne
+	@JoinColumn(name = &quot;user_Id&quot;)
+	private User user;
+
+	public Long getEmployeeId() {
+<span class="fc" id="L56">		return employeeId;</span>
+	}
+
+	public void setEmployeeId(Long employeeId) {
+<span class="fc" id="L60">		this.employeeId = employeeId;</span>
+<span class="fc" id="L61">	}</span>
+
+	public String getTitle() {
+<span class="fc" id="L64">		return title;</span>
+	}
+
+	public void setTitle(String title) {
+<span class="fc" id="L68">		this.title = title;</span>
+<span class="fc" id="L69">	}</span>
+
+	public String getFirstName() {
+<span class="fc" id="L72">		return firstName;</span>
+	}
+
+	public void setFirstName(String firstName) {
+<span class="fc" id="L76">		this.firstName = firstName;</span>
+<span class="fc" id="L77">	}</span>
+
+	public String getLastName() {
+<span class="fc" id="L80">		return lastName;</span>
+	}
+
+	public void setLastName(String lastName) {
+<span class="fc" id="L84">		this.lastName = lastName;</span>
+<span class="fc" id="L85">	}</span>
+
+	public String getGender() {
+<span class="fc" id="L88">		return gender;</span>
+	}
+
+	public void setGender(String gender) {
+<span class="fc" id="L92">		this.gender = gender;</span>
+<span class="fc" id="L93">	}</span>
+
+	public Date getDateOfBirth() {
+<span class="fc" id="L96">		return dateOfBirth;</span>
+	}
+
+	public void setDateOfBirth(Date dateOfBirth) {
+<span class="fc" id="L100">		this.dateOfBirth = dateOfBirth;</span>
+<span class="fc" id="L101">	}</span>
+
+	public Date getDateOfJoining() {
+<span class="fc" id="L104">		return dateOfJoining;</span>
+	}
+
+	public void setDateOfJoining(Date dateOfJoining) {
+<span class="fc" id="L108">		this.dateOfJoining = dateOfJoining;</span>
+<span class="fc" id="L109">	}</span>
+
+	public String getEmail() {
+<span class="fc" id="L112">		return email;</span>
+	}
+
+	public void setEmail(String email) {
+<span class="fc" id="L116">		this.email = email;</span>
+<span class="fc" id="L117">	}</span>
+
+	public String getMobileNO() {
+<span class="fc" id="L120">		return mobileNO;</span>
+	}
+
+	public void setMobileNO(String mobileNO) {
+<span class="fc" id="L124">		this.mobileNO = mobileNO;</span>
+<span class="fc" id="L125">	}</span>
+
+	public String getAddress() {
+<span class="fc" id="L128">		return address;</span>
+	}
+
+	public void setAddress(String address) {
+<span class="fc" id="L132">		this.address = address;</span>
+<span class="fc" id="L133">	}</span>
+
+	public String getQualification() {
+<span class="fc" id="L136">		return qualification;</span>
+	}
+
+	public void setQualification(String qualification) {
+<span class="fc" id="L140">		this.qualification = qualification;</span>
+<span class="fc" id="L141">	}</span>
+
+	public String getSpecialisation() {
+<span class="fc" id="L144">		return specialisation;</span>
+	}
+
+	public void setSpecialisation(String specialisation) {
+<span class="fc" id="L148">		this.specialisation = specialisation;</span>
+<span class="fc" id="L149">	}</span>
+
+	public String getStatus() {
+<span class="fc" id="L152">		return status;</span>
+	}
+
+	public void setStatus(String status) {
+<span class="fc" id="L156">		this.status = status;</span>
+<span class="fc" id="L157">	}</span>
+
+	public String getBlockStatus() {
+<span class="fc" id="L160">		return blockStatus;</span>
+	}
+
+	public void setBlockStatus(String blockStatus) {
+<span class="fc" id="L164">		this.blockStatus = blockStatus;</span>
+<span class="fc" id="L165">	}</span>
+
+	public LocalDateTime getDateCreated() {
+<span class="fc" id="L168">		return dateCreated;</span>
+	}
+
+	public void setDateCreated(LocalDateTime dateCreated) {
+<span class="fc" id="L172">		this.dateCreated = dateCreated;</span>
+<span class="fc" id="L173">	}</span>
+
+	public Long getCreatedBy() {
+<span class="fc" id="L176">		return createdBy;</span>
+	}
+
+	public void setCreatedBy(Long createdBy) {
+<span class="fc" id="L180">		this.createdBy = createdBy;</span>
+<span class="fc" id="L181">	}</span>
+
+	public UserRole getUserRole() {
+<span class="fc" id="L184">		return userRole;</span>
+	}
+
+	public void setUserRole(UserRole userRole) {
+<span class="fc" id="L188">		this.userRole = userRole;</span>
+<span class="fc" id="L189">	}</span>
+
+	public User getUser() {
+<span class="fc" id="L192">		return user;</span>
+	}
+
+	public void setUser(User user) {
+<span class="fc" id="L196">		this.user = user;</span>
+<span class="fc" id="L197">	}</span>
+	
+//	@OneToOne
+//	@JoinColumn(name = &quot;user_id&quot;)
+//	private User userId;
+	
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

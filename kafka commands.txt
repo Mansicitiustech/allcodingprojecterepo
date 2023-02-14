@@ -1,0 +1,109 @@
+kafka commands =>
+
+kafka test=>kafka-topics.bat
+zookeeper start=>zookeeper-server-start.bat config\zookeeper.properties
+kafka start=>kafka-server-start.bat config\server.properties
+
+zookeeper-server-start.batright command for topic creation=>kafka-topics --zookeeper 127.0.0.1:2181 --topic first_topic --create --partitions 3 --replication-factor 1
+-------------------------------------
+kafka-topics --bootstrap 127.0.0.1:2181 --topic first_topic --create --partition 3 --replication-factor 1
+
+kafka-topics --bootstrap-server localost:2181 --topic first_topic --create --partitions 3 --replication-factor 1
+
+kafka-topics --zookeeper localhost:2181 --topic first_topic --create --partitions 3 --replication-factor 1
+------------------------------------
+list of topics=> kafka-topics --zookeeper 127.0.0.1:2181 --list
+
+describe topic=>kafka-topics --zookeeper 127.0.0.1:2181 --topic first_topic --describe
+
+producer =>kafka-console-producer
+             kafka-console-producer --help
+
+produce data =>  kafka-console-producer --brocker -list 127.0.0.1:9092 --topic first_topic
+                 >hi
+                  >hello
+                   >first producer
+
+consumer=>kafka-console-consumer --bootstrap-server 127.0.0.1:9092 --topic first_topic
+
+saperate id by using some symboll=>kafka-console-producer --brocker -list localhost:9092 --topic first_topic --property parse.key=true --property.key.seprator=,
+
+consumers in a group=>   kafka-console-consumer --bootstrap-server 127.0.0.1:9092 --topic first_topic --group myfirst_app
+
+consume from begining=> kafka-console-consumer --bootstrap-server 127.0.0.1:9092 --topic first_topic --group myfirst_app --from begining
+
+describe=>  kafka-console-consumer --bootstrap-server 127.0.0.1:9092 --descibe --group my first-app
+
+topic creation other cmd=>
+kafka-topics.bat --create --topic tutorialspedia --bootstrap-server localhost:9092
+
+reset offset=> kafka-consumer-groups --bootstrap-server localhost:9092 --group my_first_app --reset-offset --to -earliest
+
+set offset forward and backword=> kafka-consumer-groups --bootstrap-server localhost:9092 --group my_first_app --reset-offsets --shift-by 2 --execute --topic first_topic 
+
+backword shift-by-2
+________________________________________________________________________________
+KAFKAA-BIN-WINDOWS
+
+ZOOKEEPER SERVER START =>zookeeper-server-start.bat ..\..\CONFIG\ZOOKEEPER.PROPERTIES
+kafka start=>kafka-server-start.bat ..\..\CONFIG\server.properties
+
+
+//TOPIC CREATION=>KAFKA-TOPICS.BAT --CREATE --TOPIC HELLO_FIRST --BOOTSTRAP-SERVER LOCALHOST:9092
+//KAFKA-TOPICS.BAT --CREATE --TOPIC HI_FIRST --BOOTSTRAP-SERVER LOCALHOST:9092 --partitions 3 --replication-factor 1
+
+topic creation  =>kafka-topics.bat --create --topic tutorialspedia --bootstrap-server localhost:9092
+list=> 
+kafka-topics.bat --bootstrap-server localhost:9092 --list
+
+kafka-topics.bat --describe --bootstrap-server localhost:9092 --topic last_topic
+
+kafka-topics.sh --describe --zookeeper localhost:2181 --topic my-topic
+Replacemy-topic  with your topic name. And also, it is assumed that you are running kafka with default configuration (zookeeper running at 2181).
+discribe=>
+kafka-topics.bat --describe --bootstrap-server localhost:9092 --topic springTopic1
+
+producer=>kafka-console-producer.bat --topic springTopic2 --bootstrap-server localhost:9092
+consumer=>kafka-console-consumer.bat --topic third_topic --bootstrap-server localhost:9092
+consume from begining=>kafka-console-consumer.bat --topic springTopic1 --from-beginning --bootstrap-server localhost:9092
+
+kafka-console-producer.bat --brocker -list localhost:9092 --topic first_topic --property parse.key=true --property.key.seprator=,
+
+consumers in a group=>   kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic third_topic --group myfirst_app
+
+descibe group=>kafka-console-consumer.bat --describe --bootstrap-server localhost --group myfirst-app
+
+kafka-consumer-groups.bat --bootstrap-server localhost:9092 --group myfirst --reset-offsets --shift-by 2 --execute --topic third_topic 
+
+
+------------------------------------------------------------------------------------------
+
+kafka real project =>
+
+step 1=>  made multi modelmaven project
+first make this project as a parent project
+<packaging>pom</packaging>
+
+step 2=>  made module of this project
+  right click on project ->new ->maven module->check->next ->name and finish
+
+module is created in pom
+
+step3.-> make module as a spring boot project
+create package and main class inside this module
+
+create jar file-> pom-><packaging>jar</packaging>
+
+create submodule app.propertiesfile and topic 
+create producer =>
+add okhhtpevnt dependency in pom of sub module
+add jakson and jackson databind dependency
+add okhttp dependency
+
+
+
+
+
+
+
+

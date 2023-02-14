@@ -36,10 +36,22 @@
 
 if [ -z "$MAVEN_SKIP_RC" ] ; then
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> 97be0521fc24c70d1891d419f71c687dec3219ae
   if [ -f /usr/local/etc/mavenrc ] ; then
     . /usr/local/etc/mavenrc
   fi
 
+<<<<<<< HEAD
+=======
+>>>>>>> e438e6f3d8d6113ec08c1df3fdd78b65f11c614f
+>>>>>>> d50826b9e252d9603fcd85a01547e3faf950a8c5
+>>>>>>> 97be0521fc24c70d1891d419f71c687dec3219ae
   if [ -f /etc/mavenrc ] ; then
     . /etc/mavenrc
   fi
@@ -149,7 +161,19 @@ if [ -z "$JAVACMD" ] ; then
       JAVACMD="$JAVA_HOME/bin/java"
     fi
   else
+<<<<<<< HEAD
     JAVACMD="`\\unset -f command; \\command -v java`"
+=======
+<<<<<<< HEAD
+    JAVACMD="`which java`"
+=======
+<<<<<<< HEAD
+    JAVACMD="`which java`"
+=======
+    JAVACMD="`\\unset -f command; \\command -v java`"
+>>>>>>> e438e6f3d8d6113ec08c1df3fdd78b65f11c614f
+>>>>>>> d50826b9e252d9603fcd85a01547e3faf950a8c5
+>>>>>>> 97be0521fc24c70d1891d419f71c687dec3219ae
   fi
 fi
 
@@ -216,9 +240,27 @@ else
       echo "Couldn't find .mvn/wrapper/maven-wrapper.jar, downloading it ..."
     fi
     if [ -n "$MVNW_REPOURL" ]; then
+<<<<<<< HEAD
       jarUrl="$MVNW_REPOURL/org/apache/maven/wrapper/maven-wrapper/3.1.0/maven-wrapper-3.1.0.jar"
     else
       jarUrl="https://repo.maven.apache.org/maven2/org/apache/maven/wrapper/maven-wrapper/3.1.0/maven-wrapper-3.1.0.jar"
+=======
+<<<<<<< HEAD
+      jarUrl="$MVNW_REPOURL/io/takari/maven-wrapper/0.5.6/maven-wrapper-0.5.6.jar"
+    else
+      jarUrl="https://repo.maven.apache.org/maven2/io/takari/maven-wrapper/0.5.6/maven-wrapper-0.5.6.jar"
+=======
+<<<<<<< HEAD
+      jarUrl="$MVNW_REPOURL/io/takari/maven-wrapper/0.5.6/maven-wrapper-0.5.6.jar"
+    else
+      jarUrl="https://repo.maven.apache.org/maven2/io/takari/maven-wrapper/0.5.6/maven-wrapper-0.5.6.jar"
+=======
+      jarUrl="$MVNW_REPOURL/org/apache/maven/wrapper/maven-wrapper/3.1.0/maven-wrapper-3.1.0.jar"
+    else
+      jarUrl="https://repo.maven.apache.org/maven2/org/apache/maven/wrapper/maven-wrapper/3.1.0/maven-wrapper-3.1.0.jar"
+>>>>>>> e438e6f3d8d6113ec08c1df3fdd78b65f11c614f
+>>>>>>> d50826b9e252d9603fcd85a01547e3faf950a8c5
+>>>>>>> 97be0521fc24c70d1891d419f71c687dec3219ae
     fi
     while IFS="=" read key value; do
       case "$key" in (wrapperUrl) jarUrl="$value"; break ;;
@@ -237,9 +279,27 @@ else
           echo "Found wget ... using wget"
         fi
         if [ -z "$MVNW_USERNAME" ] || [ -z "$MVNW_PASSWORD" ]; then
+<<<<<<< HEAD
             wget "$jarUrl" -O "$wrapperJarPath" || rm -f "$wrapperJarPath"
         else
             wget --http-user=$MVNW_USERNAME --http-password=$MVNW_PASSWORD "$jarUrl" -O "$wrapperJarPath" || rm -f "$wrapperJarPath"
+=======
+<<<<<<< HEAD
+            wget "$jarUrl" -O "$wrapperJarPath"
+        else
+            wget --http-user=$MVNW_USERNAME --http-password=$MVNW_PASSWORD "$jarUrl" -O "$wrapperJarPath"
+=======
+<<<<<<< HEAD
+            wget "$jarUrl" -O "$wrapperJarPath"
+        else
+            wget --http-user=$MVNW_USERNAME --http-password=$MVNW_PASSWORD "$jarUrl" -O "$wrapperJarPath"
+=======
+            wget "$jarUrl" -O "$wrapperJarPath" || rm -f "$wrapperJarPath"
+        else
+            wget --http-user=$MVNW_USERNAME --http-password=$MVNW_PASSWORD "$jarUrl" -O "$wrapperJarPath" || rm -f "$wrapperJarPath"
+>>>>>>> e438e6f3d8d6113ec08c1df3fdd78b65f11c614f
+>>>>>>> d50826b9e252d9603fcd85a01547e3faf950a8c5
+>>>>>>> 97be0521fc24c70d1891d419f71c687dec3219ae
         fi
     elif command -v curl > /dev/null; then
         if [ "$MVNW_VERBOSE" = true ]; then
@@ -309,8 +369,24 @@ WRAPPER_LAUNCHER=org.apache.maven.wrapper.MavenWrapperMain
 
 exec "$JAVACMD" \
   $MAVEN_OPTS \
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+  -classpath "$MAVEN_PROJECTBASEDIR/.mvn/wrapper/maven-wrapper.jar" \
+  "-Dmaven.home=${M2_HOME}" "-Dmaven.multiModuleProjectDirectory=${MAVEN_PROJECTBASEDIR}" \
+=======
+<<<<<<< HEAD
+  -classpath "$MAVEN_PROJECTBASEDIR/.mvn/wrapper/maven-wrapper.jar" \
+  "-Dmaven.home=${M2_HOME}" "-Dmaven.multiModuleProjectDirectory=${MAVEN_PROJECTBASEDIR}" \
+=======
+>>>>>>> 97be0521fc24c70d1891d419f71c687dec3219ae
   $MAVEN_DEBUG_OPTS \
   -classpath "$MAVEN_PROJECTBASEDIR/.mvn/wrapper/maven-wrapper.jar" \
   "-Dmaven.home=${M2_HOME}" \
   "-Dmaven.multiModuleProjectDirectory=${MAVEN_PROJECTBASEDIR}" \
+<<<<<<< HEAD
+=======
+>>>>>>> e438e6f3d8d6113ec08c1df3fdd78b65f11c614f
+>>>>>>> d50826b9e252d9603fcd85a01547e3faf950a8c5
+>>>>>>> 97be0521fc24c70d1891d419f71c687dec3219ae
   ${WRAPPER_LAUNCHER} $MAVEN_CONFIG "$@"

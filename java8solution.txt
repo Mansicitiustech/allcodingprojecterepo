@@ -1,0 +1,2308 @@
+java 8 interview question and answers preparation=>
+----------------------------------------------------
+Q5.Comparable vs Comparator. Advantages of Comparator
+ans. Comparable	Comparator
+
+_____COMPARABLE___________
+1)  Comparable provides a single sorting sequence. 
+In other words, we can sort the collection on the basis 
+of a single element such as id, name, and price.  
+ 2) Comparable affects the original class, i.e., the actual class is modified. 
+ 3) Comparable provides compareTo() method to sort elements.	
+4) Comparable is present in java.lang package.   
+
+EX.Student.java
+class Laptop implements Comparable<Laptop>{  
+int price;  
+String name;  
+ 
+Student(int price,String name){  
+this.price=price;  
+this.name=name;  
+ 
+}  
+public int compareTo(Lptop laps){
+//compare two objects
+//first object that calles compareto method and second is laps
+if(this.getNme>laps.getName()){}
+}
+} 
+
+class Test{
+
+psvm(){
+List<Laptop> lap=new List();
+lap.add(new Laptop(2345,'dell'));
+lap.add(new Laptop(20045,'apple'))
+collection.sort(lap);//in that condition i am not able to sort because here sorting order and other thing is not defined that's why i have implements comparable 
+}
+
+} 
+COMPARATOR
+_________  
+
+*we have use comparator in two conditions if class does not implementcomparable  interface
+*when we want to change sorting logic 
+*we can specify logic inside sort method,it takes two perameters 
+
+1)The Comparator provides multiple sorting sequences. In other words, we can sort the collection on the basis of multiple elements such as id, name, and price etc.
+2)  Comparator doesn't affect the original class, i.e., the actual class is not modified.
+3)	Comparator provides compare() method to sort elements.
+4) A Comparator is present in the java.util package.
+5) 	
+EX.Student.java
+class Student{  
+int rollno;  
+String name;  
+int age;  
+Student(int rollno,String name,int age){  
+this.rollno=rollno;  
+this.name=name;  
+this.age=age;  
+}  
+}  
+
+AgeComparator.java
+import java.util.*;  
+class AgeComparator implements Comparator<Student>{  
+public int compare(Student s1,Student s2){  
+if(s1.age==s2.age)  
+return 0;  
+else if(s1.age>s2.age)  
+return 1;  
+else  
+return -1;  
+}  
+}  
+
+NameComparator.java
+This class provides comparison logic based on the name. In such case, we are using the compareTo() method of String class, which internally provides the comparison logic.
+
+import java.util.*;  
+class NameComparator implements Comparator<Student>{  
+public int compare(Student s1,Student s2){  
+return s1.name.compareTo(s2.name);  
+}  
+}  
+
+mport java.util.*;  
+import java.io.*;  
+class TestComparator{  
+public static void main(String args[]){  
+//Creating a list of students  
+ArrayList<Student> al=new ArrayList<Student>();  
+al.add(new Student(101,"Vijay",23));  
+al.add(new Student(106,"Ajay",27));  
+al.add(new Student(105,"Jai",21));  
+  
+System.out.println("Sorting by Name");  
+//Using NameComparator to sort the elements  
+Collections.sort(al,new NameComparator());  
+//Traversing the elements of list  
+for(Student st: al){  
+System.out.println(st.rollno+" "+st.name+" "+st.age);  
+}  
+  
+System.out.println("sorting by Age");  
+//Using AgeComparator to sort the elements  
+Collections.sort(al,new AgeComparator());  
+//Travering the list again  
+for(Student st: al){  
+System.out.println(st.rollno+" "+st.name+" "+st.age);  
+}  
+  
+}  
+}  
+==================================================================================================================
+7) Importance of equals() and hashcode() method. What is a contract between equals() and hashcode() method.
+ANS:
+The equals() and hashcode() are the two important methods provided by the Object class for comparing objects. Since the Object class is the parent class for all Java objects, hence all objects inherit the default implementation of these two methods.
+
+Java equals():-
+
+The java equals() is a method of lang.Object class, and it is used to compare two objects.
+To compare two objects that whether they are the same, it compares the values of both the object's attributes.
+By default, two objects will be the same only if stored in the same memory location.
+public boolean equals(Object obj)  
+It returns the true if both the objects are the same, else returns false.
+symmetric: for two given objects x and y, x.equals(y) must return true if and only if equals(x) returns true.
+transitive: for any objects x, y, and z, if x.equals(y) returns true and y.equals(z) returns true, then x.equals(z) should return true.
+consistent: for any objects x and y, the value of x.equals(y) should change, only if the property in equals() changes.
+For any object x, the equals(null) must return false.
+hashCode():-
+_______________
+*To get this hashcode value for an object, we can use the hashcode() method in Java. It is the means hashcode() method that returns the integer hashcode value of the given object.
+*Since this method is defined in the Object class, hence it is inherited by user-defined classes also.
+*The hashcode() method returns the same hash value when called on two objects, which are equal according to the equals() method. And if the objects are unequal, it usually returns different hash values.
+* It is a int representation of memory address or object.
+
+public int hashCode()  
+Returns:
+It returns the hash code value for the given objects.
+
+class Test_hash_equal{  
+    public static void main(String[] args){  
+        String a = "Andrew";  
+        String b = "Andrew";  
+  
+        if(a.equals(b)){   //checking the equality of objects using equals() methods  
+            System.out.println("a & b are equal variables, and their respective hashvalues are:" + " "+ a.hashCode() + " & " + b.hashCode());  
+          
+        }  
+  
+        String c = "Maria";  
+        String d= "Julie";  
+  
+        if(!c.equals(d)){    //checking  the equality of objects using equals() method  
+            System.out.println("\nc & d are Un-equal variables, and their respective hashvalues are:" + " "+ c.hashCode() + " & " + d.hashCode());  
+              
+        }  
+    }  
+}  
+
+hashcode overriding:-
+public class Employee {
+
+	private String name;
+
+	public Employee(String name) {
+		super();
+		this.name = name;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	@Override
+	public int hashCode() {
+		return name.length()-1;
+	}
+
+}
+
+Here we have overriden the hashcode() method. Hashcode returns bucket number for the object based on number of letters in employee name after subtracting 1 from it.
+---------------------------------------------------------------------------------------------------
+ List<String> list=new LinkedList<>();  
+    list.add("ankit");  
+    list.add("peter");  
+    list.add("mayank");  
+    System.out.println("After adding: "+list);  
+    list.remove("peter");  
+    System.out.println("After removing: "+list);  
+    list.set(1,"vivek");  //easily insert data using linkedlist
+    System.out.println("After changing: "+list); 
+----------------------------------------------------------------------- 
+Q.10) Why Vector and Stack class are not used?
+vector=>
+1) You can achieve Thread Safety without Vector.
+Vector class has only one advantage over ArrayList i.e it is thread safety. But, you can achieve thread safe ArrayList by using synchronizedList() method of Collections class. Below is the sample code.
+
+public class MainClass
+{
+    public static void main(String[] args)
+    {
+        ArrayList<Integer> list = new ArrayList<Integer>();
+ 
+        Collections.synchronizedList(list);
+ 
+        //It returns Synchronized list backed by original list.
+    }
+}
+2) Thread Safeness of Vector class is time consuming.
+All methods of Vector class are synchronized. This makes each and every operation on Vector object thread safe. But, it is time consuming. Because, you need to acquire object lock for each operation you want to perform on vector object. Usually, you need set of operations to be synchronized not each and every operation.  Isn’t make sense to take the object lock once, perform the operations you want and then release the lock when you are done. Why acquire the lock again and again for each operations?. This is the time consuming process and decreases the performance of your application.
+
+
+3) Is Vector class poorly designed?
+Vector class combines two features – “Re-sizable Array” and “Synchronization“. This makes poor design. Because, if you need just “Re-sizable Array” and you use Vector class for that, you will get “synchronized Resizable Array” not just re-sizable array. This may reduce the performance of your application. Therefore, instead of using Vector class, always use ArrayList class. You will have re-sizable array and whenever you want to make it synchronized, use Collections.SynchronizedList().
+
+
+stack=>stack is based on lifo mechanism ,it contains push(),pop (),emplty() methods  and subclass of vector
+
+
+DVANTAGES AND DISADVANTAGES OF STACK COLLECTION :
+
+Helps you to manage the data in a Last In First Out(LIFO) method which is not possible with Linked list and array.
+When a function is called the local variables are stored in a stack, and it is automatically destroyed once returned.
+A stack is used when a variable is not used outside that function.
+It allows you to control how memory is allocated and deallocated.
+Stack automatically cleans up the object.
+Not easily corrupted
+Variables cannot be resized.
+
+Disadvantage:
+
+Because of dynamic memory allocation if we not use all memory space then there will be wastage of memory space .
+
+Less flexible.
+copy and paste is difficult .
+--------------------------------------------------------------
+hashset=>
+boolean isEmpty = assetSet.isEmpty(); //isEmpty() will return true if HashSet is empty
+
+if(assetSet.size() == 0){
+    System.out.println("HashSet is empty, does not contain any element");
+}
+
+
+remove element from hashset=>assetSet.remove("I am first object in HashSet"); // remove will return true
+
+Iterator setIterator = assetSet.iterator()
+while(setIterator.hasNext()){
+   String item = setIterator().next();
+   setIterator.remove(); //removes current element
+}
+-----------------------------------------------------------------------
+treeset=>internal working
+
+:-The TreeSet is much similar to the HashSet class
+. The major difference between both classes is used data structure between them. The HashSet uses a Hashtable
+, and the TreeSet uses a self-balancing tree.
+
+It contains unique elements like the HashSet class.
+It provides a faster way to access and retrieve elements.
+It does not allow to store the null elements.
+It is a non-synchronized class.
+It stores and maintains the elements in ascending order.
+The package for the TreeSet class is java.util
+It implements the SortedSet and NavigableSet interface to keep the elements sorted and structured.
+It also implements the Cloneable and Serializable interfaces.
+It extends the AbstractSet class.
+
+The data structure for the TreeSet is TreeMap; it contains a SortedSet & NavigableSet interface to keep the elements sorted in ascending order and navigated through the tree.
+------------------------------------------------------------------
+queue=>The Queue interface present in the java.util package and extends the Collection interface is used to hold the elements about to be processed in FIFO(First In First Out) order
+
+Queue<Obj> queue = new PriorityQueue<Obj> (); 
+public class QueueExample {
+ 
+    public static void main(String[] args)
+    {
+        Queue<Integer> q
+            = new LinkedList<>();
+ 
+        // Adds elements {0, 1, 2, 3, 4} to
+        // the queue
+        for (int i = 0; i < 5; i++)
+            q.add(i);
+ 
+        // Display contents of the queue.
+        System.out.println("Elements of queue "
+                           + q);
+ 
+        // To remove the head of queue.
+        int removedele = q.remove();
+        System.out.println("removed element-"
+                           + removedele);
+ 
+        System.out.println(q);
+ 
+        // To view the head of queue
+        int head = q.peek();
+        System.out.println("head of queue-"
+                           + head);
+ 
+        // Rest all methods of collection
+        // interface like size and contains
+        // can be used with this
+        // implementation.
+        int size = q.size();
+        System.out.println("Size of queue-"
+                           + size);
+    }
+}
+Output: 
+Elements of queue [0, 1, 2, 3, 4]
+removed element-0
+
+ public static void main(String args[])
+    {
+        Queue<String> pq = new PriorityQueue<>();
+ 
+        pq.add("Geeks");
+        pq.add("For");
+        pq.add("Geeks");
+ 
+        System.out.println("Initial Queue " + pq);
+ 
+        pq.remove("Geeks");
+ 
+        System.out.println("After Remove " + pq);
+ 
+        System.out.println("Poll Method " + pq.poll());
+ 
+        System.out.println("Final Queue " + pq);
+    }
+
+Initial Queue [For, Geeks, Geeks]
+After Remove [For, Geeks]
+Poll Method For
+Final Queue [Geeks]
+peak()=>
+This method returns the object at the top of the current queue, without removing it. If the queue is empty this method returns null.
+System.out.println("Element at the top of the queue: "+pq.peek());//Geeks ,top element of queue
+
+---The poll() method
+The poll() method of the Queue interface returns the object at the top of the current queue and removes it. If the queue is empty this method returns null.
+------------------------------------------------------------------------------
+iterator interface =it provide the facility of iterate the element in a forward direction only
+List<String> list = new ArrayList><();
+
+list.add("one");
+list.add("two");
+list.add("three");
+
+Iterator<String> iterator = list.iterator();
+
+while(iterator.hasNext()) {
+    String element = iterator.next();
+    System.out.println( element );
+}
+methods
+
+;-public boolean hashNext()//it return true if iterator has more element
+public Object next()//it returns the element and moves the cursor points to the next element
+remove()//remove last element 
+
+iterable=>root element  for all collection classes
+An iterable interface allows an object to be the target of enhanced for loop(for-each loop). 
+it contains one abstact method Iterator<T>iterator()
+------------------------------------------------------------------------
+
+Q. 11)Difference between HashMap and Hashtable.
+
+HashMap	:-
+__________
+1) HashMap is non synchronized. It is not-thread safe and can't be shared between many threads without proper synchronization code.	
+2) HashMap allows one null key and multiple null values.	
+3) HashMap is a new class introduced in JDK 1.2.	
+4) HashMap is fast.
+5) We can make the HashMap as synchronized by calling this code
+Map m = Collections.synchronizedMap(hashMap);	
+6) HashMap is traversed by Iterator.	
+7) HashMap inherits AbstractMap class.	
+
+* if hashmap contain multiple null values it not show error but not display in o/p.
+*it allows duplicate key but old value is replaced with new value.
+Hastable;-
+____________
+1)Hashtable is synchronized. It is thread-safe and can be shared with many threads.
+
+2)Hashtable doesn't allow any null key or value.
+3)Hashtable is a legacy class.
+4)Hashtable is slow.
+5)Hashtable is internally synchronized and can't be unsynchronized.
+6)Hashtable is traversed by Enumerator and Iterator.
+7)Hashtable inherits Dictionary class.llow duplicate keys and values.
+--------------------------------------------------------------------------
+concurrent hashmap=>The ConcurrentHashMap class is introduced in JDK 1.5 belongs to java.util.concurrent package, which implements ConcurrentMap as well as to Serializable interface also. ConcurrentHashMap is an enhancement of HashMap as we know that while dealing with Threads in our application HashMap is not a good choice because performance-wise HashMap is not up to the mark.
+
+Key points of ConcurrentHashMap:  
+
+*The underlined data structure for ConcurrentHashMap is Hashtable.
+*ConcurrentHashMap class is thread-safe i.e. multiple threads can operate on a single object without any complications.
+*At a time any number of threads are applicable for a read operation without locking the ConcurrentHashMap object which is not there in HashMap.
+*In ConcurrentHashMap, the Object is divided into a number of segments according to the concurrency level.
+The default concurrency-level of ConcurrentHashMap is 16.
+*Inserting null objects is not possible in ConcurrentHashMap as a key or value.
+public static void main(String[] args)
+    {
+        // Creating ConcurrentHashMap
+        Map<String, String> my_cmmap
+            = new ConcurrentHashMap<String, String>();
+ 
+        // Adding elements to the map
+        // using put() method
+        my_cmmap.put("1", "1");
+        my_cmmap.put("2", "1");
+        my_cmmap.put("3", "1");
+        my_cmmap.put("4", "1");
+        my_cmmap.put("5", "1");
+        my_cmmap.put("6", "1");
+ 
+        // Printing the map
+        System.out.println("Map: " + my_cmmap);
+        System.out.println();
+ 
+        // Removing the mapping
+        // with existing key 6
+        // using remove() method
+        String valueRemoved = my_cmmap.remove("6");
+ 
+        // Printing the map after remove()
+        System.out.println(
+            "After removing mapping with key 6:");
+        System.out.println("Map: " + my_cmmap);
+        System.out.println("Value removed: "
+                           + valueRemoved);
+        System.out.println();
+ 
+        // Removing the mapping
+        // with non-existing key 10
+        // using remove() method
+        valueRemoved = my_cmmap.remove("10");
+ 
+        // Printing the map after remove()
+        System.out.println(
+            "After removing mapping with key 10:");
+        System.out.println("Map: " + my_cmmap);
+        System.out.println("Value removed: "
+                           + valueRemoved);
+        System.out.println();
+ 
+        // Now clear the map using clear()
+        my_cmmap.clear();
+ 
+        // Print the clea Map
+        System.out.println("Map after use of clear(): "
+                           + my_cmmap);
+    }
+}
+Output
+Map: {1=1, 2=1, 3=1, 4=1, 5=1, 6=1}
+
+After removing mapping with key 6:
+Map: {1=1, 2=1, 3=1, 4=1, 5=1}
+Value removed: 1
+
+After removing mapping with key 10:
+Map: {1=1, 2=1, 3=1, 4=1, 5=1}
+Value removed: null
+
+Map after use of clear(): {}
+
+-------------------------
+*putIfAbsent=>using this method update the data if duplicate key is not present
+map1.put(1.'motin')
+map1.put(2,'salini');
+map1.putIfAbsent(1,'somi')
+
+==========================================================================================================================================
+Q.12) Why there is a category of Checked Exceptions? Why some exceptions are checked and others are unchecked? (Explain why)
+                                        
+                                          Throwable
+                                              |
+Error                                                                                  Exception
+                                                                                           |
+                                                     checkred/compiletime                                unchecked/runtime        
+              this exception is occured when .java is compiled to .class file                this exception is occured when       filenotfound,sql,classcast  ,io                                                                  we run .class file
+
+
+
+============================================================================================================================================
+Q 13) 12) Explain Java 8 new features.
+
+##Lambda Expression:
+
+A lambda expression is a concise representation of an anonymous function that can be passed around, it does not have a name, it has list of parameters, a body, a return type and possibly a list of exceptions that can be thrown.
+
+# Anonymous => Its anonymous because it doesn't have an explicit name.
+
+# Function => We say function because a lambda isn't associated with a particular class like a method is. But like a method, a lambda expression has list of parameters, return type and a list of exceptions that can be thrown..
+
+# Passed around => A lamda expression can be passed as an argument to a method or stored in a variable.
+
+# Concise => You don't need to write a boilerplate code like we do for anonymous classes.
+
+functional interface:It takes only one abstract method
+java.util.function package interfaces are categorized into 4:
+
+1. Predicate
+2. Consumer
+3. Supplier
+4. Function
+
+++++++++++++++++++++++++++++++++++++++++++++++
+consumer:-
+*does'nt return anything.
+*it contains accept method 
+*. It represents a function which takes in one argument
+public class Main {
+    public static void main(String args[])
+    {
+        // Consumer to display a number
+        Consumer<Integer> display = a -> System.out.println(a);
+ 
+        // Implement display using accept()
+        display.accept(10);
+ 
+Consumer<List<Integer> >
+            dispList = list -> list.stream().forEach(a -> System.out.print(a + " "));
+ 
+        List<Integer> list = new ArrayList<Integer>();
+        list.add(2);
+        list.add(1);
+        list.add(3);
+ 
+        // Implement modify using accept()
+      dispList.accept(list);
+}
+
+
+public interface Consumer<T> {  
+ public void accept(T t);
+}
+predicate:-it returns boolean value
+
+
+import java.util.function.Predicate;  
+public class PredicateInterfaceExample {  
+    public static void main(String[] args) {  
+        Predicate<Integer> pr = a -> (a > 18); // Creating predicate  
+        System.out.println(pr.test(10));    // Calling Predicate method    
+    }  
+}  
+
+public interface Predicate<T> {
+public boolean test(T t);
+}
+
+supplier:-it will not take anything just return boolean value.
+public class Main {
+    public static void main(String args[])
+    {
+  
+        // This function returns a random value.
+        Supplier<Double> randomValue = () -> Math.random();
+  
+        // Print the random value using get()
+        System.out.println(randomValue.get());
+    }
+}
+public interface Supplier<T> {
+public T get();
+}
+
+Function:-
+public interface Function<T, R> {                     //it contains apply method ,its parameter return type can bee                                                        anything
+public R apply(T t);
+}
+public interface Function<String, String>function=name->name.toUppercase()
+ {                     //it contains apply method ,its parameter return type can be anything
+public R apply(T t);
+sop(function.apply("rani");
+}
+ByFunction:-
+take 2 i/ps
+====================================================================================================================================
+Q. What is Stream?
+=> From technical point of view: Stream is a typed interface.
+Introduced in Java 8, the Stream API is used to process collections of objects. A stream is a sequence of objects that supports various methods
+*Streams don’t change the original data structure,it takes two operations intermediate  and terminal
+public interface Stream<T> extends BaseStream<T, Stream<T>> {}
+
+1.A stream does not hold any data. It pulls the data it processes from source (collection/Array/File).
+2. A stream does not modify the data it processes.
+
+3. The source may be unbound
+   -- It is not finite.
+   -- But most of the time, it only means that size of the source is not known at build time.
+4. One Thread => One Task
+   Second Thread => Second Task
+   Most of the computers have multiple cores (dual, quad, octa)
+   Parallel streams => It uses multiple cores of your computer.
+
+Collection or Array => Main purpose => To store the data.
+Every element in the Collection has to be computed before it can be added to the Collection. While a Stream is conceptually a pipeline, in which elements are computed on demand.
+*Not a data structure
+*Designed for lambdas
+Set<Transaction>
+Set<Employee>
+
+Find all employees of HR department having salary > 30000.
+
+SELECT \* FROM employees
+WHERE department='HR' AND salary > 30000
+
+Q.use of streams
+java.util.stream
+*Stream is used to compute elements as per the pipelined methods without altering the original value of the object.
+
+Q. intermediate and terminal operations in stream api
+*Intermediate operation will transform a stream into another stream
+*Intermediate operations return the stream itself so you can chain multiple methods calls in a row.
+filter(Predicate<T>)
+map(Function<T>)
+flatMap(Function<T>)
+sorted(Comparator<T>)
+peek(Consumer<T>)
+distinct()
+limit(long n) //set the limit, not return more than limit
+skip(long n)
+
+*Terminal operation will produce a result 
+forEach
+forEachOrdered
+toArray
+reduce
+collect
+min
+max
+count
+anyMatch
+allMatch
+noneMatch
+findFirst    
+findAny
+
+
+
+
+Q. difference bw map() and flatmap()
+4.1.2. Stream.map()
+The map() intermediate operation converts each element in the stream into another object via the given function.
+
+https://howtodoinjava.com/java8/java-streams-by-examples/            //all usecases
+=======================================================================================
+methos reference;-it is special type of lambda expression
+*it is used to create simple lembda ex. by reffering existing methods.
+public class Teacher{
+public static age(){sop("this is static method ref of teacher");}
+public void subject(){sop("this is  non static method ref of teacher");
+public Teacher(){sop("cons of cons reff);}
+}
+}
+public interface Student{
+public void stuff();
+}
+
+public class Test{
+psvm(){
+Student student=Teacher::age;//static method reff
+student.stuff();
+Teacher teach=new Teacher();
+Student student=teach::age;//non static method reff
+student.stuff();
+Student student=Teacher::new;//cons reff
+Teacher teacher=student.getTeacher();
+teacher.stuff();
+}
+}
+===================================================================================
+date and time api->
+------------------------
+disadvantage of before 8 version -
+*Bad API designing: The classic Date and Calendar APIs does not provide methods to perform basic day-to-day functionalities. The Date and Time classes introduced in Java 8 are  provides number of different methods for performing operations regarding date, time, duration and periods.
+*Not thread safe : Unlike old java.util.Date which is not thread safe the new date-time API is immutable and doesn’t have setter methods.
+*Less operations : In old API there are only few date operations but the new API provides us with many date operations.
+
+->The most commonly used classes are LocalDate, LocalTime and LocalDateTime  
+*The LocalDate represents a date in ISO format (yyyy-MM-dd) without time.  //package java.time*
+
+ public class LocalDateExample1 {    
+  public static void main(String[] args) {    
+    LocalDate date = LocalDate.now();    
+    LocalDate yesterday = date.minusDays(1);    
+    LocalDate tomorrow = yesterday.plusDays(2);    
+    System.out.println("Today date: "+date);    
+    System.out.println("Yesterday date: "+yesterday);    
+    System.out.println("Tomorrow date: "+tomorrow); 
+
+    LocalDate date1 = LocalDate.of(2017, 1, 13);    
+    System.out.println(date1.isLeapYear());//boolean value 
+	     LocalDate date5 = LocalDate.of(2017, 1, 13);  
+    LocalDateTime datetime = date5.atTime(1,50,9);  
+
+  //formatter 
+        LocalDate d2 = LocalDate.of(2002, 05, 01);  
+        String d2Str = d2.format(DateTimeFormatter.ISO_DATE);  
+        System.out.println("Date2 in string :  " + d2Str);      
+  }    
+}  
+
+*Java LocalTime class is an immutable class that represents time with a default format of hour-minute-second. It inherits Object class and implements the Comparable interface.     
+----------------------------------------------------------------------------------------------------------
+
+Q. static and default method of interface
+for ex. i have one app but after 5 years i want to do some changes in my app ,so in this case ,i make one method in interface with 
+default or static keyword and i not need to change all classes code 
+* but in this case i want to change some classes functionality ,then i can only use default method and override method snd change method code.
+static:-
+*if we dont override the method ,then use static method
+* java interface static method is part of interface, we can’t use it for implementation class objects.
+*Java interface static methods are good for providing utility methods, for example null check, collection sorting etc.
+static boolean isNull(String str) {
+		System.out.println("Interface Null Check");
+
+		return str == null ? true : "".equals(str) ? true : false;
+	}
+*Java interface static method helps us in providing security by not allowing implementation classes to override them. 
+-------------------------------------------------------------------------------------------------------------------------
+Q.
+new features in exception in java7:-
+
+before java7:- try{}catch(Arithmaticexception | nullpointerexception |filenotfoundexception ex) {}
+*public void saver()throws myexception1,myexception2,Exception  {}   
+
+in java7:-
+try{}   catch(Arithmaticexception ex){}//multicatch bloack was introduced
+ catch(nullpointerexception ex1){}
+catch(filenotfoundexception ex3){}
+
+* public void saver()throws myexception1,myexception2  {} //exception thrown is not required
+
+
+
+
+
+
+
+
+=======================================================================================================================================================================
+                                                                                                SPRING BOOT
+
+Q. 1> spring boot features:-
+
+Web Development
+It is well suited Spring module for web application development. We can easily create a self-contained HTTP server using embedded Tomcat, Jetty or Undertow. We can use the spring-boot- starter-web module to start and running application quickly.
+
+SpringApplication
+It is a class which provides the convenient way to bootstrap a spring application which can be started from main method. You can call start your application just by calling a static run() method.
+
+public static void main(String[] args){  
+    SpringApplication.run(className.class, args);  
+}  
+Application Events and Listeners
+Spring Boot uses events to handle variety of tasks. It allows us to create factories file that are used to add listeners. 
+Always create factories file in META-INF folder like: META-INF/spring.factories
+We can register servlet listeners in Spring Boot using either ServletListenerRegistrationBean or @Component or @ServletComponentScan.
+
+Admin Support
+Spring Boot provides the facility to enable admin related features for the application. It is used to access and manage application remotely. We can enable it by simply using spring.application.admin.enabled property.
+
+Properties Files
+Spring Boot provides rich set of Application Properties. So, we can use that in properties file of our project. Properties file is used to set properties like: server-port = 8082 and many others. It helps to organize application properties.
+
+Type-safe Configuration
+Strong type-safe configuration is provided to govern and validate the configuration of application. Application configuration is always a crucial task which should be type-safe. We can also use annotation provided by this library.
+
+Logging
+Spring Boot uses Common logging for all internal logging. Logging dependencies are managed by default. We should not change logging dependencies, if there is no required customization is needed.
+
+<dependencies>
+   <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>org.springframework.context</artifactId>
+      <version>3.0.0.RELEASE</version>
+      <scope>runtime</scope>
+   </dependency>
+</dependencies>
+
+<repositories>
+   <repository>
+      <id>com.springsource.repository.maven.snapshot</id>
+      <url>http://maven.springframework.org/snapshot/</url>
+      <snapshots><enabled>true</enabled></snapshots>
+   </repository>
+</repositories>
+
+Security
+Spring Boot applications are spring bases web applications. So, it is secure by default with basic authentication on all HTTP endpoints. A rich set of Endpoints are available for develop a secure Spring Boot application.
+
+SpringApplication => Class that can be used to bootstrap and launch a Spring application from a Java main method. 
+By default class will perform the following steps to bootstrap your application: 
+
+1) Create an appropriate ApplicationContext instance (depending on your classpath) 
+2) 
+3) Refresh the application context, loading all singleton beans 
+4) 
+Spring container once gets started is responsible for:
+
+1) Creating all objects: This is done by component scan. @SpringBootApplication is a combination of @Configuration + @ComponentScan + @EnableAutoConfiguration.
+
+'2) Dependency Injection.
+3) Managing the life cycle of all beans.
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+2)What is @SpringBootApplication?
+
+@SpringBootApplication is a combination of @SpringBootConfiguration + @ComponentScan + @EnableAutoConfiguration.
+@SpringBootConfiguration =>*@SpringBootConfiguration annotation in Spring Boot is a class-level annotation which indicates that this class provides the application configuration.
+*When we mark a class with @SpringBootConfiguration, it means that the class provides @Bean definition methods.
+@SpringBootConfiguration
+public class DemoApp {
+  
+    public static void main(String[] args) {
+        SpringApplication.run(DemoApp.class, args);
+    }
+  
+    @Bean
+    public Course course() {
+        return new Course();
+    }
+  
+    @Bean
+    public Student student() {
+        return new Student();
+    }
+}
+
+@EnableAutoConfiguration=>@EnableAutoConfiguration annotation auto-configures the beans that are present in the classpath. This simplifies the developers work by guessing the required beans from the classpath and configure it to run the application. This annotation is part of the spring boot project.
+
+We can use exclude to disable a list of classes that we do not want to be auto-configured:
+
+@Configuration
+@EnableAutoConfiguration(exclude={JdbcTemplateAutoConfiguration.class})
+public class EmployeeApplication {
+    public static void main(String[] args) {
+        ApplicationContext context = SpringApplication.run(EmployeeApplication.class, args);
+        // ...
+    }
+}
+We can use excludeName to define a fully qualified list of class names that we want to exclude from the auto-configuration:
+
+@Configuration
+@EnableAutoConfiguration(excludeName = {"org.springframework.boot.autoconfigure.jdbc.JdbcTemplateAutoConfiguration"})
+public class EmployeeApplication {
+    public static void main(String[] args) {
+        ApplicationContext context = SpringApplication.run(EmployeeApplication.class, args);
+        // ...
+    }
+}
+
+@componentscan:*scans all packages under the class annotated with this annotation.
+@ComponentScan
+public class DemoAutoConfiguration {
+}
+ I will state some of the useful attributes of @ComponentScan:
+
+basePackages - can be used to state specific packages to scan.
+@ComponentScan(basePackages = "com.baeldung.componentscan.springapp")
+
+useDefaultFilters - by setting this attribute to false (defaults true) you can make sure spring does not scan @Component, @Repository, @Service, or @Controller automatically.
+it enables spring to scan for things like config,controllers,service it is used with @configuration to specify the package for spring to scan of components
+---------------------------------------------------------------------------------------------------------------------------------------------
+Q. Where is Spring Boot Auto Configuration implemented?
+-- All auto configuration logic is implemented in spring-boot-autoconfigure.jar. All auto configuration logic for mvc, data, jms and other frameworks is present in a single jar.
+
+-- Other important file inside spring-boot-autoconfigure.jar is /META-INF/spring.factories. This file lists all the auto configuration classes that should be enabled under the EnableAutoConfiguration key. A few of the important auto configurations are listed below.
+
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+org.springframework.boot.autoconfigure.aop.AopAutoConfiguration,\
+org.springframework.boot.autoconfigure.MessageSourceAutoConfiguration,\
+
+------------------------------------------------------------------------------
+3) What is autoconfiguration and how does Spring boot does auto-configuration? How to Disable a Specific Auto-Configuration? How to Register a Custom Auto-Configuration?
+Spring Boot auto-configuration automatically configures the Spring application based on the jar dependencies that we have added.
+For example, if the H2 database Jar is present in the classpath and we have not configured any beans related to the database manually, the Spring Boot's auto-configuration feature automatically configures it in the project.
+
+We can enable the auto-configuration feature by using the annotation @EnableAutoConfiguration. 
+Disable Auto-configuration Classes
+We can also disable the specific auto-configuration classes, if we do not want to be applied. We use the exclude attribute of the annotation @EnableAutoConfiguration to disable the auto-configuration classes. For example:
+
+import org.springframework.boot.autoconfigure.*;  
+import org.springframework.boot.autoconfigure.jdbc.*;  
+import org.springframework.context.annotation.*;  
+@Configuration(proxyBeanMethods = false)  
+@EnableAutoConfiguration(exclude={DataSourceAutoConfiguration.class})  
+public class MyConfiguration   
+{  
+}  
+---------------------------------------------------------------------------------------------------------
+
+4) What is profiles in Spring boot?
+
+-- We have different environments for our application. For eg. Dev, Qa / test, Prod environments etc..
+-- Every environment has different configuration for eg. database config, logging configs etc..
+-- We have to make sure that application is loosely coupled with application configuration.
+
+-- Naming convention:
+                      application-{profile}.properties
+
+So we can create different application.properties files for different environments.
+
+For eg.    application-dev.properties    [ For Dev environment ]//different profile is used to we can define different database configuration
+               application-prod.properties  [ For Prod environment ]
+               application-qa.properties     [ For qa / test environment ]
+
+-- At runtime, we can specify which profile to select by using a property, "spring.profiles.active" property.
+
+     spring.profiles.active=prod     => This will select application-prod.properties file//it set in app.properties file
+     spring.profiles.active=dev      => This will select application-dev.properties file
+we create progile go to run as configuration->program variable and give the name of profile 
+*
+----------------------------------------------------------------------------------------------------------------------
+5) What is ResponseEntity class?
+ResponseEntity represents the whole HTTP response: status code, headers, and body.
+@GetMapping(value = "/employee/{id}")
+	public ResponseEntity<Optional<Employee>> getEmployeeById(@PathVariable Long id){
+		Optional<Employee> employee =emplService.getById(id);
+		if(!employee.isPresent())
+		{
+			LOGGER.debug("Employee with id {} does not exists.", id);
+			return new ResponseEntity<Optional<Employee>>(HttpStatus.NOT_FOUND);
+		}
+		LOGGER.info("Found {} : " ,employee);
+		return new ResponseEntity<Optional<Employee>>(employee,HttpStatus.OK);	
+	}
+
+@GetMapping("/age")
+ResponseEntity<String> age(@RequestParam("yearOfBirth") int yearOfBirth) {
+    if (isInFuture(yearOfBirth)) {
+        return ResponseEntity.badRequest()
+            .body("Year of birth cannot be in the future");
+    }
+
+    return ResponseEntity.status(HttpStatus.OK)
+        .body("Your age is " + calculateAge(yearOfBirth));
+}
+
+header=>@GetMapping("/response-entity-builder-with-http-headers")
+public ResponseEntity<String> usingResponseEntityBuilderAndHttpHeaders() {
+    HttpHeaders responseHeaders = new HttpHeaders();
+    responseHeaders.set("Baeldung-Example-Header", 
+      "Value-ResponseEntityBuilderWithHttpHeaders");
+
+    return ResponseEntity.ok()
+      .headers(responseHeaders)
+      .body("Response with header using ResponseEntity");
+}
+----------------------------------------------------------------------------------------------------------------------------------
+6)  what is use of devtools 
+
+Spring Boot 1.3 provides another module called Spring Boot DevTools. DevTools stands for Developer Tool. The aim of the module is to try and improve the development time while working with the Spring Boot application. Spring Boot DevTools pick up the changes and restart the application.
+
+We can implement the DevTools in our project by adding the following dependency in the pom.xml file.
+
+<dependency>  
+<groupId>org.springframework.boot</groupId>  
+<artifactId>spring-boot-devtools</artifactId>  
+<scope>runtime<scope >  
+</dependency>  
+
+Spring Boot DevTools provides the following features:
+
+
+Automatic Restart=>Automatic Restart: Auto-restart means reloading of Java classes and configure it at the server-side. After the server-side changes, it deployed dynamically, server restarts happen, and load the modified code. It is mostly used in microservice-based applications.
+
+LiveReload=>LiveReload: The Spring Boot DevTools module includes an embedded server called LiveReload. It allows the application to automictically trigger a browser refresh whenever we make changes in the resources. It is also known as auto-refresh.
+
+Note: We can disable the LiveReload by setting the property spring.devtools.livereload.enabled to false
+------------------------------------------------------------------------------------------------------------------------------------------
+Q. What kind of changes does Spring Boot Developer Tools pick up?
+-- By default, any entry on the classpath that points to a folder will be monitored for changes.
+
+Note: These folders will not trigger reload by default
+
+/META-INF/maven
+/META-INF/resources
+/resources
+/static
+/public
+/templates
+
+
+-- You can configure additional folders to scan in application.properties.
+
+spring.devtools.restart.additional-paths = /path-to-folder
+
+-- You can also configure folders to exclude.
+
+spring.devtools.restart.exclude=static/**,public/** 
+
+
+---------------------------------------------------------------------------------------------------------------------------
+7 )different embedded server supported by spring boot ,which is default and how we can use other server
+Spring boot has embedded tomcat server (default server), so we don't need external server to deploy our application. Spring boot supports tomcat, jetty and undertow servers.  
+
+-- For servlet stack applications, the spring-boot-starter-web includes Tomcat by including spring-boot-starter-tomcat, but you can use spring-boot-starter-jetty or spring-boot-starter-undertow instead.
+
+ but you can use spring-boot-starter-tomcat, spring-boot-starter-jetty, or spring-boot-starter-undertow instead.
+
+Q. How we can change default Tomcat server? (We need to use jetty server instead).
+
+
+<dependency>
+	<groupId>org.springframework.boot</groupId>
+	<artifactId>spring-boot-starter-web</artifactId>
+	<exclusions>
+		<!-- Exclude the Tomcat dependency -->
+		<exclusion>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-tomcat</artifactId>
+   		</exclusion>
+               </exclusions>
+</dependency>
+
+<!-- Use Jetty instead -->
+<dependency>
+	<groupId>org.springframework.boot</groupId>
+	<artifactId>spring-boot-starter-jetty</artifactId>
+</dependency>
+
+------------------------------------------------------------------------------------------------------------------------------
+8) Different ways of creating spring boot application?
+1)https://start.spring.io/  (Spring Initializer)
+ 2) Using IDEs
+ 3) Using Spring boot CLI=>
+1.Download Spring Boot CLI zip file using Spring Initi
+2.extract zip
+3)Set Spring Boot CLI Environment Variables in Windows System 
+4)set PATH=D:\spring-boot-cli-1.2.3.RELEASE\bin;%PATH%
+5)spring --version
+installation successfully
+
+Create a “HelloWorld” Folder in our Local FileSystem to place our groovy scripts.
+Develop a Groovy script file using the following content
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+9) Explain SpringApplication.run(...) method.
+ It creates an appropriate ApplicationContext instance and load beans.
+@SpringBootApplication
+public class Application {
+
+    public static void main(String[] args) {
+        SpringApplication.run(Application.class, args);
+    }
+}
+*it automatically created an Application class file, and that path matches the path in the POM.xml file, 
+*it bootstarp our app
+*It also runs embedded Tomcat server in Spring web application.
+//our spring app  star when main method is start ,main method internally called static run method
+*springApplication is a class ,it has a run static method and run method internally again called run method  and create stopwatch object and using this call start() method .
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+10) What are the advantages of starter poms?
+Starter POMs are a set of convenient dependency descriptors that you can include in your application. 
+*spring boot starter
+*it just empty jars and its main purpose to provide neccessary  dependencies to work with liberary
+*Spring Boot provides a number of starters that allow us to add jars in the classpath. Spring Boot built-in starters make development easier
+
+spring-boot-starter-security =>It is used for Spring Security.
+spring-boot-starter-data-jpa =>	It is used for Spring Data JPA with Hibernate.
+spring-boot-starter	      =>It is used for core starter, including auto-configuration support, logging, and YAML.
+spring-boot-starter-test	=>It is used to test Spring Boot applications with libraries, including JUnit, Hamcrest, and Mockito.
+
+*increase pom manageability. production-ready, tested & supported dependency configurations. decrease the overall configuration time for the project.
+Before Spring Boot was introduced, Spring Developers used to spend a lot of time on Dependency management. Spring Boot Starters were introduced to solve this problem so that the developers can spend more time on actual code than Dependencies. Spring Boot Starters are dependency descriptors that can be added under the <dependencies> section in pom.xml.
+*No need to remember the name and version of the dependencies.
+---------------------------------------------------------------------------------------------------------------------------------------------------
+ 11 ) What is content negotiation and how we can achieve it in Spring boot?
+we rest api client can be anything like js ,html,mobile app etc
+*for ex. if clent want a format xml but server not support in that condition it will return error
+in other cases format can be different ,its not specific what kind of format client needs ,in this case it may not be id of the configure specific format on the server side ,instead we want to leave the option to client what kind of format that expect from server and 
+at that time server may not able to send any random format and there are certain limitations at server side,if format does not support then server return error this mechanism is called content negociation 
+
+server determine format 
+1> path extension =>.pdf ,.json   for ex. client want list of employee in pdf format ,if server support then return otherwise given error 
+2>url parameter 
+3.>http accept header
+Aceept=header
+
+message converts => http converter
+Jaxb2RootElementHttpMessageConverter=converts java objects to /from xml
+MappingJacsonHttpMessageconverter=read and write json
+
+step1 ;add dependency in pom.xml
+
+in postmen after hitting the api ,go to headers and give key->accept  and value ->application/xml  =>its behind done using negociation
+
+Create the Employee model class as follows-
+package com.javainuse.model;
+using path perameter=>
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
+public class Employee {
+	private String empId;
+	private String name;
+	private String designation;
+	private double salary;
+
+	public Employee() {
+	}
+
+
+}
+
+@RestController
+public class TestController {
+
+	@RequestMapping(value = "/employee", method = RequestMethod.GET,
+			produces = { "application/json", "application/xml" })
+	public Employee firstPage() {
+
+		Employee emp = new Employee();
+		emp.setName("emp1");
+		emp.setDesignation("manager");
+		emp.setEmpId("1");
+		emp.setSalary(3000);
+
+		return emp;
+	}
+
+}
+
+
+using path extension=>
+@Configuration
+@EnableWebMvc
+public class WebConfig extends WebMvcConfigurerAdapter {
+
+@Override
+public void configureContentNegotiation(ContentNegotiationConfigurer configurer) {
+
+    //set path extension to true
+    configurer.favorPathExtension(true).
+    //set favor parameter to false
+    favorParameter(false).
+    //ignore the accept headers
+    ignoreAcceptHeader(true).
+    //dont use Java Activation Framework since we are manually specifying the mediatypes required below
+    useJaf(false).
+    defaultContentType(MediaType.APPLICATION_JSON).
+    mediaType("xml", MediaType.APPLICATION_XML).
+    mediaType("json", MediaType.APPLICATION_JSON);
+  }
+}
+
+localhost:8080/employee.json
+localhost:8080/employee.xml
+
+parameter =>
+
+@Configuration
+@EnableWebMvc
+public class WebConfig extends WebMvcConfigurerAdapter {
+
+@Override
+public void configureContentNegotiation(ContentNegotiationConfigurer configurer) {
+
+	//set path extension to false
+	configurer.favorPathExtension(false).
+    //request parameter ("format" by default) should be used to determine the requested media type
+    favorParameter(true).
+    //the favour parameter is set to "mediaType" instead of default "format"
+    parameterName("mediaType").
+    //ignore the accept headers
+    ignoreAcceptHeader(true).
+    //dont use Java Activation Framework since we are manually specifying the mediatypes required below
+    useJaf(false).
+    defaultContentType(MediaType.APPLICATION_JSON).
+    mediaType("xml", MediaType.APPLICATION_XML).
+    mediaType("json", MediaType.APPLICATION_JSON);
+  }
+}
+
+ Compile and the run the SpringBootHelloWorldApplication.java as a Java application.
+Go to localhost:8080/employee?mediaType=json
+---------------------------------------------------------------------------------------------------------------------------------------------
+12) Different ways of handling exceptions in Sprinig boot?  => You suppose to explain @ExceptionHandler and @ControllerAdvice
+*Handling exceptions is an important part of building a robust application. Spring Boot offers more than one way of doing it.
+*Spring Boot provides us tools to handle exceptions beyond simple ‘try-catch’ blocks. To use these tools, we apply a couple of annotations that allow us to treat exception handling 
+
+i>@ResponseStatus=>
+As the name suggests, @ResponseStatus allows us to modify the HTTP status of our response. It can be applied in the following places:
+
+On the exception class itself
+Along with the @ExceptionHandler annotation on methods
+Along with the @ControllerAdvice annotation on classes
+@ResponseStatus(value = HttpStatus.NOT_FOUND)
+public class NoSuchElementFoundException extends RuntimeException {
+  ...
+}
+
+Another way to achieve the same is by extending the ResponseStatusException class:
+
+public class NoSuchElementFoundException extends ResponseStatusException {
+
+  public NoSuchElementFoundException(String message){
+    super(HttpStatus.NOT_FOUND, message);
+  }
+
+  @Override
+  public HttpHeaders getResponseHeaders() {
+      // return response headers
+  }
+}
+
+ii> @ExceptionHandler=>
+The @ExceptionHandler annotation gives us a lot of flexibility in terms of handling exceptions. For starters, to use it, we simply need to create a method either in the controller itself or in a @ControllerAdvice class and annotate it with @ExceptionHandler:
+@RestController
+@RequestMapping("/product")
+public class ProductController { 
+    
+  private final ProductService productService;
+  
+  //constructor omitted for brevity...
+
+  @GetMapping("/{id}")
+  public Response getProduct(@PathVariable String id) {
+    return productService.getProduct(id);
+  }
+
+  @ExceptionHandler(NoSuchElementFoundException.class)
+  @ResponseStatus(HttpStatus.NOT_FOUND)  //it tell method ,please do not block code due to this exception ,give some proper message
+  public ResponseEntity<String> handleNoSuchElementFoundException(
+      NoSuchElementFoundException exception
+  ) {
+    return ResponseEntity
+        .status(HttpStatus.NOT_FOUND)
+        .body(exception.getMessage());
+  }
+
+}
+
+iii>@ControllerAdvice=>
+
+Why is it called "Controller Advice"?
+The term 'Advice' comes from Aspect-Oriented Programming (AOP) which allows us to inject cross-cutting code (called "advice") around existing methods.  Controller advice classes allow us to apply exception handlers to more than one or all controllers in our application:
+*it handle exceptions globally
+
+public class TeacherNotFoundException extends RuntimeException {
+    // Exception class 
+}
+
+@ControllerAdvice
+public class CustomizedExceptionHandling extends ResponseEntityExceptionHandler {
+
+    @ExceptionHandler(TeacherNotFoundException.class)
+    public ResponseEntity<Object> handleExceptions( TeacherNotFoundException exception, WebRequest webRequest) {
+        ExceptionResponse response = new ExceptionResponse();
+        response.setDateTime(LocalDateTime.now());
+        response.setMessage("Not found");
+        ResponseEntity<Object> entity = new ResponseEntity<>(response,HttpStatus.NOT_FOUND);
+        return entity;
+    }
+}
+
+@RestController
+public class ResourceController {
+    
+    @Autowired
+    ResourceService resourceService;
+
+    @GetMapping("/getTeacherDetails/{id}")
+    public Teacher getTeacherDetails(@PathVariable("id") int id){
+        Teacher teacher = resourceService.getTeacherDetails(id);
+        if(teacher == null)
+            throw new TeacherNotFoundException();
+        
+        return teacher;
+    }
+}
+    
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+13) How you document your REST APIs?  => You suppose to explain about swagger
+There are multiple approaches to documenting your RESTful API
+     * WADL
+     * RESTDocs=>1. Overview
+Spring REST Docs generates documentation for RESTful services that is both accurate and readable. It combines hand-written documentation with auto-generated document snippets produced with Spring tests.
+     * Swagger or OpenDocs
+
+Swagger2 is an open source project used to generate the REST API documents for RESTful web services. It provides a user interface to access our RESTful web services via the web browser.
+
+
+-- We would need to add a couple of dependencies related to Swagger and configure a Docket to generate Swagger Documentation. We will also use Swagger UI to have a visual representation of the Documentation and execute Test Requests.
+
+1 create project
+2.<dependency>
+   <groupId>io.springfox</groupId>
+   <artifactId>springfox-swagger2</artifactId>
+   <version>2.7.0</version>
+</dependency>
+<dependency>
+   <groupId>io.springfox</groupId>
+   <artifactId>springfox-swagger-ui</artifactId>
+   <version>2.7.0</version>
+</dependency>
+3.create controller with api 
+5. swagger configuration 
+package com.example.springbootswagger2.configuration;
+ 
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import com.google.common.base.Predicates;
+import springfox.documentation.builders.RequestHandlerSelectors;
+import springfox.documentation.spi.DocumentationType;
+import springfox.documentation.spring.web.plugins.Docket;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
+ 
+@Configuration
+@EnableSwagger2
+public class Swagger2UiConfiguration extends WebMvcConfigurerAdapter 
+{
+  @Bean
+  public Docket api() {
+    // @formatter:off
+    //Register the controllers to swagger
+    //Also it is configuring the Swagger Docket
+    return new Docket(DocumentationType.SWAGGER_2).select()
+        // .apis(RequestHandlerSelectors.any())
+        .apis(Predicates.not(RequestHandlerSelectors.basePackage("org.springframework.boot")))
+        // .paths(PathSelectors.any())
+        // .paths(PathSelectors.ant("/swagger2-demo"))
+        .build();
+    // @formatter:on
+  }
+
+6.Open http://localhost:8080/swagger2-demo/swagger-ui.html to see the Swagger UI documentation in the browser.
+Open the link http://localhost:8080/swagger2-demo/v2/api-docs and it should give the entire documentation in JSON format. 
+-------------------------------------------------------------------------------------------------------------------------------------------	
+14) What is spring boot actuator? Can we create custom endpoint and how?
+Spring Boot Actuator is a sub-project of the Spring Boot Framework. It uses HTTP endpoints to expose operational information about any running application.
+
+*Spring Boot Actuator provides built-in production ready endpoints.
+The main benefit of using this library is that we get health and monitoring metrics from production-ready applications.
+
+ex in hit the api and i get this things-health,healthpath,self
+
+Spring Boot Actuator Features=>
+There are three main features of Spring Boot Actuator:
+
+Endpoints
+Metrics
+Audit
+------------------------
+Endpoint: The actuator endpoints allows us to monitor and interact with the application. Spring Boot provides a number of built-in endpoints. We can also create our own endpoint. We can enable and disable each endpoint individually. Most of the application choose HTTP, where the Id of the endpoint, along with the prefix of /actuator, is mapped to a URL.
+
+For example, the /health endpoint provides the basic health information of an application. The actuator, by default, mapped it to /actuator/health. 
+
+/health	               =>   Returns application health information.
+/caches	               =>   It exposes available caches.
+
+/conditions	 =>   Shows the conditions that were evaluated on configuration and auto-configuration.
+/configprops	 =>   It displays a collated list of all @ConfigurationProperties.
+/integrationgraph	 =>   It shows the Spring Integration graph. Requires a dependency on spring-integration-core.
+/loggers	               =>  The configuration of loggers in the application..
+mappings	It is used to display a collated list of all @RequestMapping paths.	True
+shutdown	It is used to allow the application to be gracefully shutdown.
+
+*These endpoints store sensitive information about our application 
+By default, just by importing it, all of the endpoints in our application will be secured.
+
+     spring.security.user.name=user
+     spring.security.user.password=password
+
+
+*Spring Boot enables security for all actuator endpoints. It uses form-based authentication that provides user Id as the user and a randomly generated password. We need to override this configuration by management.security.roles property. For example:
+
+management.security.enabled=true  
+management.security.roles=ADMIN  
+security.basic.enabled=true  
+security.user.name=admin  
+security.user.passowrd=admin 
+
+*You can change the base path of the actuator endpoints by adding the following properties in the application.properties:
+
+ management.endpoints.web.base-path=/admin
+ management.server.port=8090
+URL http://localhost:8080/actuator
+ 
+-------------------------
+
+metrics	              =>  It shows several useful metrics information like JVM memory used, system CPU usage, open files, and much more
+The metrics endpoint provides access to application metrics.
+Creating Custom Endpoints:
+-----
+
+-- This can be achieved by adding the @Endpoint and @Component annotation to your class.
+
+@JsonInclude(JsonInclude.Include.NON_EMPTY)
+public class CustomHealth {
+
+    private Map<String, Object> healthDetails;
+
+    @JsonAnyGetter
+    public Map<String, Object> getHealthDetails() {
+        return this.healthDetails;
+    }
+}
+
+@Component
+@Endpoint(id="custom-health")
+public class CustomHealthEndPoint {
+
+    @ReadOperation
+    public CustomHealth health() {
+        Map<String, Object> details = new LinkedHashMap<>();
+        details.put("CustomHealthStatus", "Everything looks good");
+        CustomHealth health = new CustomHealth();
+        health.setHealthDetails(details);
+        return health;
+    }
+
+http://host:port/actuator<em>/custom-health
+-----------------
+{
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/actuator",
+      "templated": false
+    },
+    "features-arg0": {
+      "href": "http://localhost:8080/actuator/features/{arg0}",
+      "templated": true
+    },
+    "features": {
+      "href": "http://localhost:8080/actuator/features",
+      "templated": false
+    },
+    "beans": {
+      "href": "http://localhost:8080/actuator/beans",
+      "templated": false
+    },
+    "caches-cache": {
+      "href": "http://localhost:8080/actuator/caches/{cache}",
+      "templated": true
+    },
+    // truncated
+}
+-------------------------------------------------------------------------------------------------
+15) How to enable cors in spring boot?
+-- Cross-Origin Resource Sharing (CORS) is a security policy that uses HTTP headers to tell a browser to let a web application running at one origin (domain) have permission to access selected resources from a server at a different origin (domain).
+a) @CrossOrigin annotation  => Class OR Method Level Annotation.
+@CrossOrigin("*")=>controller
+
+
+
+@Configuration
+public class CorsConfig {
+	
+	@Bean
+	public WebMvcConfigurer corsConfiguration() {
+		
+		return new WebMvcConfigurer() {
+			
+			@Override
+			public void addCorsMappings(CorsRegistry registry) {
+				registry.addMapping("/**").allowedOrigins("http://localhost:4200", "http://www.myapp.com");
+			}
+		};
+	}
+}
+------------------------------------------------------------------------------------------------------------------------------------------
+16) What is Spring Data JPA? How we can define our custom queries?
+jpa=>Spring Boot JPA is a Java specification for managing relational data in Java applications. It allows us to access and persist data between Java object/ class and relational database. JPA follows Object-Relation Mapping (ORM). It is a set of interfaces. It also provides a runtime EntityManager API for processing queries and transactions on the objects against the database. It uses a platform-independent object-oriented query language JPQL (Java Persistent Query Language).
+
+
+The main advantage of JPA over JDBC is that, in JPA, data is represented by objects and classes while in JDBC data is represented by tables and records. It uses POJO to represent persistent data that simplifies database programming.
+It dynamically generates queries from queries methods name.
+
+JPA is an open-source API.
+
+difference=>
+jPA does not provide any implementation classes.	                                        It provides implementation classes.
+It uses platform-independent query language called JPQL (Java Persistence Query Language).	It uses its own query language called HQL (Hibernate Query Language).
+It is defined in javax.persistence package.	                                                 It is defined in org.hibernate package.
+It is implemented in various ORM tools like Hibernate, EclipseLink, etc.	                Hibernate is the provider of JPA.
+JPA uses EntityManager for handling the persistence of data.                                In Hibernate uses Session for handling the persistence of data.
+spring data jpa 
+custom query=>
+@Query("SELECT n FROM Note n WHERE n.featured = true")
+List<Note> findByActiveNotes();
+-----------
+orm take row and convert into object and the given 
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+17) What Are Possible Sources of External Configuration?
+This uses environment variables, properties files, command-line arguments, YAML files, and system properties to mention the required configuration properties for its corresponding environments. Following are the sources of external configuration:
+
+Command-line properties – Spring Boot provides support for command-line arguments and converts these arguments to properties and then adds them to the set of environment properties.
+
+Application Properties – By default, Spring Boot searches for the application properties file or its YAML file in the current directory of the application, classpath root or config directory to load the properties.
+
+Profile-specific properties – Properties are loaded from the application-{profile}.properties file or its YAML file. This file resides in the same location as that of the non-specific property files and the {profile} placeholder refers to an active profile or an environment.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+=========================================================================================================================================
+spring web=>used to create rest api and spring web content with spring mvc 
+
+=======================================================================================================================================================
+Q. what is cloud microservices architechture:-
+Microservice Architecture is a Service Oriented Architecture. In the microservice architecture, there are a large number of microservices. By combining all the microservices, it constructs a big service. In the microservice architecture, all the services communicate with each other.
+These are the services which are exposed by REST.
+The services must be cloud-enabled.
+
+Spring Cloud provides tools for developers to quickly build some of the common patterns in distributed systems (e.g. configuration management, service discovery, circuit breakers, intelligent routing, micro-proxy, control bus, one-time tokens, global locks, leadership election, distributed sessions, cluster state).
+
+Distributed/versioned configuration
+
+
+
+Routing
+
+Service-to-service calls
+
+Load balancing
+
+Circuit Breakers
+
+
+-----------------------------------------------------------------------------------------
+characteristics of microservice
+
+Scalability
+Usually, the microservice architecture will work on the cloud service. it’s easier to scale up the cloud service. One can surely add more resources as they want.
+You can think of the microservice architecture as a cloud. One can easily upgrade a single service if one wants. If there are a bunch of services in an app, there are good chances that a person might want to upgrade to just one service.
+
+independent Usage
+When we say each service is independent, we mean it. In simpler words, each of the services will work on it’s own. Like we have seen in the previous point, the service will use componentization.
+Here are different things you can do with each service independently.
+Each service will have its codebase.
+You can also separate the database layer.
+
+Usage in case of Failure
+System failure is very common when you are using any kind of technology. There are good chances that the system might fail and the entire system will be down.
+In this case, each service is running independently. In simpler words, if there is a system failure, each of the services will retain its functionality.
+The microservice doesn’t share the common resource and the API can also be different. Therefore, in case of failure, there can be some of the services that are still accessible.
+If there is a single service failure, one can surely access other services. Each service will have its independent security mechanism. Therefore, there are good chances that all the services won’t go down together.
+Easy Improvisation
+Improving the service and giving the best services to the customer is the first aim of any business. In that case, one can always use the microservice architecture.
+Here, the improvisation is made easier. One can easily improve any service as they are working independently. It’s easier to improve an independent module rather than checking out the entire website.
+Service can use different language,framework and technologies
+-----------------------------------------------------------------------------------------------
+
+Q. what is config server
+1.add the dependency of actuator and config
+
+. Config server is where all configurable parameters of all microservices are stored and maintained.
+2.Add @EnableConfigServer annotation
+ With this annotation, this artifact will act like a spring config server.
+*provide a set of configuration files from a Git repository to client applications. 
+*Central configuration server provides configurations (properties) to each micro service connected.
+Environment Repository — Spring uses environment repositories to store the configuration data. it supports various of authentication mechanisms to protect the configuration data when retrieving.
+* The benefit of a central config server is that if we change a property for a microservice,
+
+Api gateway:An API gateway provides a single, unified API entry point across one or more internal APIs. 
+API Gateway is also responsible for request routing, composition, and protocol translation
+An API gateway separates external public APIs From internal microservice APIs,
+All the requests made by the client go through the API Gateway. After that, the API Gateway routes requests to the appropriate microservice.
+In microservices, we route all the requests through an API. We can implement common features like authentication, routing, rate limiting, auditing, and logging in the API Gateway.
+Consider a scenario in which we do not want to call a microservice more than five times by a particular client. We can do it as a part of the limit in the API Gateway. We can implement the common features across microservices in the API gateway. The Zuul API Gateway is a popular API Gateway implementation.
+An API Gateway includes:
+
+Security
+Caching
+API composition and processing
+Managing access quotas
+API health monitoring
+Versioning
+Routing
+
+advantage:
+The most important advantage of API Gateway is that it encapsulates the internal structure of the application.
+Rather than invoking the specific service, the client directly talks to the API Gateway.
+It provides each kind of client with a specific API.
+dis:
+It requires routing rules.
+There is a possibility of a single point of failure.
+Risk of complexity due to all the API rules are in one place.
+@Configuration
+public class SpringCloudConfig {
+
+    @Bean
+    public RouteLocator gatewayRoutes(RouteLocatorBuilder builder) {
+        return builder.routes()
+                .route(r -> r.path("/employee/**")
+                        .uri("http://localhost:8081/")
+                        .id("employeeModule"))
+
+                .route(r -> r.path("/consumer/**")
+                        .uri("http://localhost:8082/")
+                        .id("consumerModule"))
+                .build();
+    }
+
+--------------------------------------------------------------------------
+different way to deploy microservices:
+vm:
+This architectural pattern makes the services easy to understand because each service is isolated with its own CPU, memory, and server configuration
+
+Functions as a Service
+Functions as a Service (FaaS) or Serverless is a new and fast-growing option. Instead of virtualizing the hardware (VM) or virtualizing the operating system (containers), serverless pushes the smallest possible component, a function or package of code. In this setup each microservice will be deployed to a FaaS like AWS Lambda.
+
+containers:but where virtual machines virtualize the underlying hardware, containers virtualize the operating system. 
+
+
+
+
+
+
+
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                             Spring:-
+
+What is Spring?
+Spring is an open source development framework for enterprise Java. The core features of the Spring Framework can be used in developing any Java application, but there are extensions for building web applications on top of the Java EE platform. Spring framework targets to make J2EE development easier to use and promote good programming practice by enabling a POJO-based programming model.
+---------------------------------------
+What are benefits of using spring?
+Lightweight − Spring is lightweight when it comes to size and transparency. The basic version of spring framework is around 2MB.
+
+Inversion of control (IOC) − Loose coupling is achieved in spring using the technique Inversion of Control. The objects give their dependencies instead of creating or looking for dependent objects.
+
+Container − Spring contains and manages the life cycle and configuration of application objects.
+
+MVC Framework − Spring's web framework is a well-designed web MVC framework, which provides a great alternative to web frameworks such as Struts or other over engineered or less popular web frameworks.
+
+Transaction Management − Spring provides a consistent transaction management interface that can scale down to a local transaction (using a single database, for example) and scale up to global transactions (using JTA, for example).
+
+Exception Handling − Spring provides a convenient API to translate technology-specific exceptions (thrown by JDBC, Hibernate, or JDO, for example) into consistent, unchecked exceptions.
+
+
+AOP:-One of the key components of Spring Framework is the Aspect oriented programming (AOP) framework. Aspect-Oriented Programming entails breaking down program logic into distinct parts called so-called concerns. The functions that span multiple points of an application are called cross-cutting concerns and these cross-cutting concerns are conceptually separate from the application's business logic. There are various common good examples of aspects like logging, auditing, declarative transactions, security, caching, etc.
+Spring AOP module provides interceptors to intercept an application. For example, when a method is executed, you can add extra functionality before or after the method execution.
+------------------------------------------------------------------------
+What are the different modules in Spring framework?
+Core module
+Bean module
+Context module
+Expression Language module
+JDBC module
+ORM module
+OXM module
+Java Messaging Service(JMS) module
+Transaction module
+Web module
+Web-Servlet module
+Web-Struts module
+Web-Portlet module
+-------------------------------------------------------------------------------
+What is Spring configuration file?
+Spring configuration file is an XML file. This file contains the classes information and describes how these classes are configured and introduced to each other.
+
+-------------------------------------------------------------------------------------
+What is Dependency Injection?
+Inversion of Control (IoC) is a general concept, and it can be expressed in many different ways and Dependency Injection is merely one concrete example of Inversion of Control.
+
+
+This concept says that you do not create your objects but describe how they should be created. You don't directly connect your components and services together in code but describe which services are needed by which components in a configuration file. A container (the IOC container) is then responsible for hooking it all up.
+
+Dependency Injection (DI) is a design pattern that removes the dependency from the programming code so that it can be easy to manage and test the application. Dependency Injection makes our programming code loosely coupled.
+--------------------------------------------------------------------------------------------------------------
+
+What are the different types of IoC (dependency injection)?
+public class Student{private String studentName;
+public void display(){sop(studentName)}
+//setters and getters}
+
+public class Exam{
+psvm(){
+ApplicationContext context=new ClassPathXmlApplicationContext("Path.xml");
+Student student1=context.getBean("student");
+student1.display();
+}
+
+}
+path.xml=>
+setter injection=>in this injection we reuired setters and getters but not required constructor
+<beans><bean id="student" class="">  //class=class qualfied name,id and getbean both are same ,bean is track by applicationcontext
+<property name="studentName" value="mansi"></property>//here we using setter method because here we are using property
+//spring internally uses setter method to inject the values 
+
+</bean></beans>
+
+constructor injection=>*here we inject the properties of class using constructor
+*here we not need setters and getters
+-When container call the constructor of the class. It should be used for mandatory dependencies.
+public Student(String studentName){this.studentName=studentName;}
+path.xml=>
+<beans><bean id="student" class="">  //class=class qualfied name,id and getbean both are same ,bean is track by applicationcontext
+<constructor-arg name="studentName" value="mansi"></constructor-args>
+//spring internally uses constructor to inject the values 
+
+
+
+</bean></beans>
+*otherwise get beacreationException
+----------------------------------------------------------------------------------------------------------------
+Which DI would you suggest Constructor-based or setter-based DI?
+Overriding: Setter injection overrides the constructor injection. If we use both constructor and setter injection, IOC container will use the setter injection.
+Changes: We can easily change the value by setter injection. It doesn't create a new bean instance always like constructor. So setter injection is flexible than constructor injection.
+---------------------------------------------------------------------------------------------------------------
+What are the benefits of IOC?
+The main benefits of IOC or dependency injection are −
+
+It minimizes the amount of code in your application.
+
+It makes your application easy to test as it doesn't require any singletons or JNDI lookup mechanisms in your unit test cases.
+
+Loose coupling is promoted with minimal effort and least intrusive mechanism.
+
+IOC containers support eager instantiation and lazy loading of services.
+--------------------------------------------------------------------------------------------------
+What is AOP?
+----------------------------------------------------------------------------------------------
+What is Spring IoC container?
+The Spring IoC creates the objects, wire them together, configure them, and manage their complete lifecycle from creation till destruction. The Spring container uses dependency injection (DI) to manage the components that make up an application.
+--------------------------------------------------------------------------------------------------
+What are types of IoC containers? Explain them.
+There are two types of IoC containers −
+
+Bean Factory container − This is the simplest container providing basic support for DI .The BeanFactory is usually preferred where the resources are limited like mobile devices or applet based applications
+
+Spring ApplicationContext Container − This container adds more enterprise-specific functionality such as the ability to resolve textual messages from a properties file and the ability to publish application events to interested event listeners.
+
+
+----------------------------------------------------------------------------------------------------------------------
+Give an example of BeanFactory implementation.
+The most commonly used BeanFactory implementation is the XmlBeanFactory class. This container reads the configuration metadata from an XML file and uses it to create a fully configured system or application.
+
+
+------------------------------------------------------------------------------------------
+What are the common implementations of the ApplicationContext?
+The three commonly used implementation of 'Application Context' are −
+
+FileSystemXmlApplicationContext − This container loads the definitions of the beans from an XML file. Here you need to provide the full path of the XML bean configuration file to the constructor.
+
+ClassPathXmlApplicationContext − This container loads the definitions of the beans from an XML file. Here you do not need to provide the full path of the XML file but you need to set CLASSPATH properly because this container will look bean configuration XML file in CLASSPATH.
+
+WebXmlApplicationContext − This container loads the XML file with definitions of all beans from within a web application.
+
+--------------------------------------------------------------------------------------
+What is the difference between Bean Factory and ApplicationContext?
+1) BeanFactory Container is basic container, it can only create objects and inject Dependencies.But we can not attach other services like security, transaction ,messaging etc. To provied all the services we have to use ApplicationContext Container.
+
+2) BeanFactory Container doesn't support the feature of AutoScanning , but ApplicationContext Container supports.
+
+3) Beanfactory Container will not create a bean object upto the request time.It means Beanfactory Container loads beans laziely. While ApplicationContext Container creates objects of Singleton bean at the time of loading only.It means there is early loading.
+
+4) Beanfactory Container support only two scopes (singleton & prototype) of the beans. But ApplicationContext Container supports all the beans scope.
+
+-------------------------------------------------------------------------------------------------------------
+What are Spring beans?
+The objects that form the backbone of your application and that are managed by the Spring IoC container are called beans. A bean is an object that is instantiated, assembled, and otherwise managed by a Spring IoC container. These beans are created with the configuration metadata that you supply to the container, for example, in the form of XML <bean/> definitions.
+
+-----------------------------------------------------------------------------------------------------
+What does a bean definition contain?
+The bean definition contains the information called configuration metadata which is needed for the container to know the followings −
+
+How to create a bean
+Bean's lifecycle details
+Bean's dependencies
+----------------------------------------------------------------------------------------------------
+How do you provide configuration metadata to the Spring Container?
+There are following three important methods to provide configuration metadata to the Spring Container −
+
+XML based configuration file.
+Annotation-based configuration
+Java-based configuration
+-----------------------------------------------------------
+How do add a bean in spring application?
+<?xml version = "1.0" encoding = "UTF-8"?>
+
+<beans xmlns = "http://www.springframework.org/schema/beans"
+   xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation = "http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+   <bean id = "helloWorld" class = "com.tutorialspoint.HelloWorld">
+      <property name = "message" value = "Hello World!"/>
+   </bean>
+
+</beans>
+---------------------------------------------------------------------
+How do you define a bean scope?
+two ways 
+Let's create a Person entity to exemplify the concept of scopes:
+
+public class Person {
+    private String name;
+
+    // standard constructor, getters and setters
+}
+Afterwards, we define the bean with the singleton scope by using the @Scope annotation:
+
+  1  . 
+@Bean
+@Scope("singleton")
+public Person personSingleton() {
+    return new Person();
+}
+We can also use a constant instead of the String value in the following manner:
+
+@Scope(value = ConfigurableBeanFactory.SCOPE_SINGLETON)
+
+OR=> we can define @Scope  like 
+@Component
+@Scope("singleton")
+public class Person {
+    private String name;
+
+    // standard constructor, getters and setters
+}
+
+2 .<bean id="personSingleton" class="org.baeldung.scopes.Person" scope="singleton"/>
+------------------------------------------------------------------------------------------------------
+What bean scopes does Spring support? Explain them.
+
+1.  singleton=>  When we define a bean with the singleton scope, the container creates a single instance of that bean; all requests for that bean name will return the same object,
+
+public class Student{private String studentName;
+public void display(){sop(studentName)}
+//setters and getters}
+
+public class Exam{
+psvm(){
+ApplicationContext context=new ClassPathXmlApplicationContext("Path.xml");
+Student student1=context.getBean("student",Student.Class);
+sop(student1.hashCode())
+Student student2=context.getBean("student",Student.Class);
+sop(student2.hashCode())                            //both object student 1 and student 2 hashcode are same,container return one object 
+student1.display();
+}
+
+}
+
+<bean id="personSingleton" class="org.baeldung.scopes.Person" scope="singleton"/>
+
+2. prototype=>A bean with the prototype scope will return a different instance every time it is requested from the container.
+//every time new object created by spring container
+but in that scenario above code return different hashcode at every time ,that means container return different object at every time
+.<bean id="personSingleton" class="org.baeldung.scopes.Person" scope="singleton"/>
+
+
+3)	request	=>The bean instance will be created per HTTP request.& used in web app
+4)	session	=>The bean instance will be created per HTTP session.& used in web app
+5)	globalsession=>	The bean instance will be created per HTTP global session. It can be used in portlet context only.
+--------------------------------------------------------------------------------------------------
+What is default scope of bean in Spring framework?
+Singleton is the default scope for a Bean, the one that will be used if nothing else is indicated.
+--------------------------------------------------------------------------------------------------------
+Are Singleton beans thread safe in Spring Framework?
+no
+-----------------------------------------------------------------------------------------------------------------
+Explain Bean lifecycle in Spring framework?
+Following is sequence of a bean lifecycle in Spring −
+
+Instantiate − First the spring container finds the bean's definition from the XML file and instantiates the bean..
+
+Populate properties − Using the dependency injection, spring populates all of the properties as specified in the bean definition.
+
+Set Bean Name − If the bean implements BeanNameAware interface, spring passes the bean's id to setBeanName() method.
+
+Set Bean factory − If Bean implements BeanFactoryAware interface, spring passes the beanfactory to setBeanFactory() method.
+
+Pre Initialization − Also called postprocess of bean. If there are any bean BeanPostProcessors associated with the bean, Spring calls postProcesserBeforeInitialization() method.
+
+Initialize beans − If the bean implements IntializingBean,its afterPropertySet() method is called. If the bean has init method declaration, the specified initialization method is called.
+
+Post Initialization − If there are any BeanPostProcessors associated with the bean, their postProcessAfterInitialization() methods will be called.
+
+Ready to use − Now the bean is ready to use by the application.
+
+Destroy − If the bean implements DisposableBean , it will call the destroy() method .
+-------------------------------------------------------------------------------------------------
+What are inner beans in Spring?
+A <bean/> element inside the <property/> or <constructor-arg/> elements defines a so-called inner bean. An inner bean definition does not require a defined id or name; the container ignores these values. It also ignores the scope flag. Inner beans are always anonymous and they are always scoped as prototypes.
+
+---------------------------------------------------------------
+How can you inject Java Collection in Spring?
+list ,map ,set
+What is bean auto wiring?
+The Spring container is able to autowire relationships between collaborating beans. This means that it is possible to automatically let Spring resolve collaborators (other beans) for your bean by inspecting the contents of the BeanFactory without using <constructor-arg> and <property> elements.
+--------------------------------------------------------------------------------------------
+What are different Modes of auto wiring?
+autowiring provide DI
+
+1>no=>
+This option is default for spring framework and it means that autowiring is OFF. You have to explicitly set the dependencies using <property> tags in bean definitions.
+
+1.>byName:-
+it injects the object dependency according to the name of the bean.in such case bean name and property name must be same ,it internally calls setter method 
+class Address{private String location}
+
+class Employee{
+private Address address;
+private String id}
+
+bean.xml=>
+ <bean id = "address" class = "com.tutorialspoint.Address>//here bean name address is match with Employee address property
+      <property name = "location" value = "Hello World!"/>
+   </bean>
+
+<bean id = "employee" class = "com.tutorialspoint.Employee" autowire ="byName">
+      <property name = "id" value = "2"/>
+   </bean>
+
+2.>byType=> in such case bean name and property name not be same
+the property’s class type is used for searching a matching bean definition in the configuration file.
+<bean id = "addressname" class = "com.tutorialspoint.Address>//
+      <property name = "location" value = "Hello World!"/>
+   </bean>
+
+<bean id = "employee" class = "com.tutorialspoint.Employee" autowire ="byType">
+      <property name = "id" value = "2"/>
+   </bean>
+
+3.>constructor=> Autowiring by constructor is similar to byType, but applies to constructor arguments. In autowire enabled bean,
+class Employee{
+private Address address;
+private String id
+public Employee(Adress address)
+  {
+    this.address = address;
+  }
+
+
+}
+
+<bean id = "addressname" class = "com.tutorialspoint.Address>//
+      <property name = "location" value = "Hello World!"/>
+   </bean>
+
+<bean id = "employee" class = "com.tutorialspoint.Employee" autowire ="constructor">
+      <property name = "id" value = "2"/>
+   </bean>
+--------------------------------------------------------------------------------------------------------------------------------------
+What are the limitations with autowiring?
+Limitations of autowiring are −
+
+Overriding possibility − You can still specify dependencies using <constructor-arg> and <property> settings which will always override autowiring.
+
+Primitive data types − You cannot autowire so-called simple properties such as primitives, Strings, and Classes.
+---------------------------------------------------------------------
+Can you inject null and empty string values in Spring?
+yes
+------------------------------------------------------
+What is Annotation-based container configuration?
+An alternative to XML setups is provided by annotation-based configuration which relies on the bytecode metadata for wiring up components instead of angle-bracket declarations. Instead of using XML to describe a bean wiring, the developer moves the configuration into the component class itself by using annotations on the relevant class, method, or field declaration.
+
+-----------------------------------------------------------------------------
+How do you turn on annotation wiring?
+Annotation wiring is not turned on in the Spring container by default. So, before we can use annotation-based wiring, we will need to enable it in our Spring configuration file by configuring <context:annotation-config/>.
+same can be achieve using AutowiredAnnotationBeanPostProcessor
+<bean class ="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>
+
+----------------------------------------------------
+What does @Required annotation mean?
+This annotation simply indicates that the affected bean property must be populated at configuration time, through an explicit property value in a bean definition or through autowiring. The container throws BeanInitializationException if the affected bean property has not been populated.
+public class Company {
+ 
+    private Integer cid;
+    private String cname;
+ 
+    @Required
+    public void setCid(Integer cid) {
+        this.cid = cid;
+    }
+    public Integer getCid() {
+        return cid;
+    }
+ -------------------
+    <beans
+    //...
+    xmlns:context="http://www.springframework.org/schema/context"
+    //...
+    xsi:schemaLocation="http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+ 
+    <!-- To activate the @Required annotation in spring -->
+    <context:annotation-config />
+     
+</beans>
+same can be achieved using 
+<bean class="org.springframework.beans.factory.annotation.RequiredAnnotationBeanPostProcessor"/>
+     
+</beans>
+
+------------------------------------------------------------------------------------------------------------
+What does @Autowired annotation mean?
+What does @Qualifier annotation mean?
+What are the JSR-250 Annotations? Explain them.
+Spring has JSR-250 based annotations which include @PostConstruct, @PreDestroy and @Resource annotations.
+@Resource(name = "namedFile")
+	private File defaultFile;
+@Bean(name="namedFile")
+    public File namedFile() {
+        File namedFile = new File("namedFile.txt");
+        return namedFile;
+    }
+-------------------
+@PostConstruct
+	public void init() {
+		System.out.println("Employee bean is intialized..");
+	}
+	
+	@PreDestroy
+	public void destroy() {
+		System.out.println("Employee bean is going to destroy..");
+	}
+
+---------------------------------------------------------------------------------
+What is Spring Java Based Configuration? Give some annotation example.
+java based configuration option enables you to write most of your Spring configuration without XML but with the help of few Java-based annotations.
+
+For example: Annotation @Configuration indicates that the class can be used by the Spring IoC container as a source of bean definitions. The @Bean annotation tells Spring that a method annotated with @Bean will return an object that should be registered as a bean in the Spring application context.
+-------------------------------------------------------------------------------------------
+How is event handling done in Spring?
+Describe some of the standard Spring events.
+What is Aspect?
+-------------------------------------------------------------------
+What is the difference between concern and cross-cutting concern in Spring AOP?
+What is Join point?
+What is Advice?
+What is Pointcut?
+--------------------------------------------------------------------------------
+What is Introduction?
+An introduction allows you to add new methods or attributes to existing classes.
+----------------------------------------------------------------------------------
+What is Target object?
+The object being advised by one or more aspects, this object will always be a proxy object. Also referred to as the advised object.
+-------------------------------------------------------------
+What is XML Schema based aspect implementation?
+What is @AspectJ? based aspect implementation?
+---------------------------------------------------------------------------------------------
+How JDBC can be used more efficiently in spring framework?
+JDBC can be used more efficiently with the help of a template class provided by spring framework called as JdbcTemplate.
+------------------------------------------------------------------------
+How JdbcTemplate can be used?
+So it leaves developers to write the statements and queries to get the data to and from the database. JdbcTemplate provides many convenience methods for doing things such as converting database data into primitives or objects, executing prepared and callable statements, and providing custom database error handling.
+
+Spring JdbcTemplate is a powerful mechanism to connect to the database and execute SQL queries. It internally uses JDBC api, but eliminates a lot of problems of JDBC API.
+
+The problems of JDBC API are as follows:
+
+We need to write a lot of code before and after executing the query, such as creating connection, statement, closing resultset, connection etc.
+We need to perform exception handling code on the database logic.
+We need to handle transaction.
+Repetition of all these codes from one to another database logic is a time consuming task.
+
+JdbcTemplate
+NamedParameterJdbcTemplate
+SimpleJdbcTemplate
+
+1)public int update(String query)	=>is used to insert, update and delete records.
+2)	public int update(String query,Object... args)	=>is used to insert, update and delete records using PreparedStatement using given arguments.
+3)	public void execute(String query)=>	is used to execute DDL query.
+4)	public T execute(String sql, PreparedStatementCallback action)=>	executes the query by using PreparedStatement callback.
+
+
+public class Employee {  
+private int id;  
+private String name;  
+private float salary;  
+//no-arg and parameterized constructors  
+//getters and setters  
+}  
+
+public class EmployeeDao {  
+private JdbcTemplate jdbcTemplate;  
+  
+public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {  
+    this.jdbcTemplate = jdbcTemplate;  
+}  
+  
+public int saveEmployee(Employee e){  
+    String query="insert into employee values(  
+    '"+e.getId()+"','"+e.getName()+"','"+e.getSalary()+"')";  
+    return jdbcTemplate.update(query);  
+}  
+
+//<property name="dataSource" ref="ds"></property>  ,ref meaning is composition  class name
+-----------------------------------------------------------------------------------------------------
+What are the types of the transaction management Spring supports?
+Programmatic transaction management − This means that you have managed the transaction with the help of programming. That gives you extreme flexibility, but it is difficult to maintain.
+
+Declarative transaction management − This means you separate transaction management from the business code. You only use annotations or XML based configuration to manage the transactions.
+
+------------------------------------------------------------------------------------
+Which of the above transaction management type is preferable?
+What is Spring MVC framework?
+The Spring web MVC framework provides model-view-controller architecture and ready components that can be used to develop flexible and loosely coupled web applications.
+
+-----------------------------------------------------------------------------------------------------------
+What is a DispatcherServlet?
+The Spring Web MVC framework is designed around a DispatcherServlet that handles all the HTTP requests and responses.
+@Controller
+@RequestMapping("/user")
+@ResponseBody
+public class UserController {
+ 
+    @GetMapping("/example")
+    public User fetchUserExample() {
+        // ...
+    }
+}
+
+The paths specified by the @RequestMapping annotation are managed internally via the HandlerMapping interface.
+
+The URLs structure is naturally relative to the DispatcherServlet itself – and determined by the servlet mapping.
+1.>Mappings
+To understand mappings, we need to first look at how to annotate controllers
+2.>HTTP Request Handling
+The core responsibility of a DispatcherServlet is to dispatch incoming HttpRequests to the correct handlers specified with the @Controller or @RestController annotations.
+
+3.>The ViewResolver Interface
+A ViewResolver is attached to a DispatcherServlet as a configuration setting on an ApplicationContext object.
+
+What is WebApplicationContext ?
+The WebApplicationContext is an extension of the plain ApplicationContext that has some extra features necessary for web applications. It differs from a normal ApplicationContext in that it is capable of resolving themes, and that it knows which servlet it is associated with.
+Special bean types in the WebApplicationContext themeresolver,handler mapping,view resolver
+-----------------------------------------------------------------------------------------------------------------
+What are the advantages of Spring MVC over Struts MVC ?
+Spring provides an integrated framework for all tiers of your application.
+
+Spring provides a very clean separation between controllers, JavaBean models, and views.
+
+Spring Controllers are configured using IoC like any other objects. This makes them easy to test and integrated with other objects managed by Spring.
+
+Spring MVC web tiers are typically easier to test than Struts web tiers, due to the elimination forced concrete inheritance and explicit dependence of controllers on the dispatcher servlet.
+
+Spring MVC is entirely based on interfaces that makes it very flexible unlike Struts, which forces your Action and Form objects into concrete inheritance.
+Spring provides interceptors as well as controllers, making it easy to factor behaviors common to the handling of many requests.
+-------------------------------------------------------------------------------------------------------------------------------------------
+What is Controller in Spring MVC framework?
+
+-------------------------------------------------------------
+muitithreading
+difference yiesld and weight
+difference abstract class and functional interface
+functional interface
+lambda expression
+
+n+1 problem in hibernate=>
+Hibernate N+1 problem occurs when you use FetchType. LAZY for your entity associations. If you perform a query to select n-entities and if you try to call any access method of your entity's lazy association, Hibernate will perform n-additional queries to load lazily fetched objects.
+@Entity(name = "Post")
+@Table(name = "post")
+public class Post {
+ 
+    @Id
+    private Long id;
+ 
+    private String title;
+ 
+    //Getters and setters omitted for brevity
+}
+ 
+@Entity(name = "PostComment")
+@Table(name = "post_comment")
+public class PostComment {
+ 
+    @Id
+    private Long id;
+ 
+    @ManyToOne
+    private Post post;
+ 
+    private String review;
+ 
+    //Getters and setters omitted for brevity
+}
+select * from postcommit 
+num of postcommit=n
+
+avoid this problem=>
+
+ELECT 
+    pc.id as id1_1_, 
+    pc.post_id as post_id3_1_, 
+    pc.review as review2_1_ 
+FROM 
+    post_comment pc
+
+SELECT p.id as id1_0_0_, p.title as title2_0_0_ FROM post p WHERE p.id = 1
+
+--------------------------------
+static class=> are nested classes that are declared static. In Java, Static classes are a convenient way of grouping classes together. Java doesn’t allow you to create top-level static classes; only nested (inner) classes. That is why a static class is also known as a static inner class or static nested class. 
+
+Static classes are able to access only the static members of their enclosing class.
+Static class can interact with the non-static member only through the object of its enclosing class only, as it cannot access the non-static members of its enclosing class directly.
+
+abstract class instantiate=>   Abstract classes cannot be instantiated, but they can be subclassed. When an abstract class is subclassed, the subclass usually provides implementations for all of the abstract methods in its parent class. However, if it does not, then the subclass must also be declared abstract .
+
+but it is possible=>abstract class my {
+    public void mymethod() {
+        System.out.print("Abstract");
+    }
+}
+
+class poly {
+    public static void main(String a[]) {
+        my m = new my() {};
+        m.mymethod();
+    }
+}
+No, you are not creating the instance of your abstract class here. Rather you are creating an instance of an anonymous subclass of your abstract class. And then you are invoking the method on your abstract class reference pointing to subclass object.
+-------------------------
+dirty loading in hibernate=>
+
+-------------------------------------------------------
+jdkjre and jvm=>   Prime functionality	JDK is primarily used for code execution and has prime functionality of development.	On other hand JRE is majorly responsible for creating environment for code execution.	JVM on other hand specifies all the implementations and responsible to provide these implementations to JRE.
+----------------------------------------------------------------------------------------------------
+load balancing=>it is define distribution of network or traffic across muliple services
+it take the request from client and send it to the capable service,who is able to manage this request
+nginx
+we use ribbon liberary
+@RibbonClient(name="servicename")
+
+@Bean
+@Loadbalanced
+resttemplate
+in app.yml=>
+
+ribbonclientname take as prefix
+ribbon
+listofservers
+
+in list of servers first request goes to first first server
+
+========================================================================================================
+memory areas in java=>
+
+5 types=>
+
+
+pc register ,stack,heap ,method area native method stack area
+
+
+method area=>The class method area is the memory block that stores the class code, variable code(static variable, runtime constant), method code, and the constructor of a Java program.
+
+native method stack area=>Also called C stacks, native method stacks are not written in Java language. This memory is allocated for each thread when it’s created And it can be of a fixed or dynamic nature.
+native methods in java=>
+wait(),notify(),
+
+native methods in object classs =>
+
+
+protected native Object clone() throws CloneNotSupportedException
+
+public final native Class getClass()
+public native int hashCode()
+
+public final native void notify()
+public final native void notifyAll()
+
+
+=========================================================================================================
+why java is not pure object oriented=>
+
+========================================================================
+treemap=>implements nevigable interface
+Java TreeMap cannot have a null key but can have multiple null values.
+descendingMap()=>decending map by keys
+.headMap(102,true)=>Returns key-value pairs whose keys are less than or equal to the specified key.  
+tailMap(102,true)=>Returns key-value pairs whose keys are greater than or equal to the specified key.
+subMap(100, false, 102, true))=>return key value pair between.
+
+
+finalize=>Finalize method in java is used to release all the resources used by the object before it is deleted/destroyed by the Garbage collector. finalize() is not a reserved keyword in java, it's a method. Once the clean-up activity is done by the finalize() method garbage collector immediately destroys the java object.
+
+we can use try catch inside finally
+=======================================================================================================
+
+difference between merge and update=>
+
+A merge() method is used to update the database. It will also update the database if the object already exists. An update() method only saves the data in the database. If the object already exists, no update is performed
+
+---------------------------------------------------------------
+object injection
+dispature servlet=>
+ 
+
+make string as immutable =>  Declare the class as final so it can't be extended.
+Make all fields private so that direct access is not allowed.
+Don't provide setter methods for variables.
+Make all mutable fields final so that its value can be assigned only once.
+
+
+
+
