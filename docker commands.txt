@@ -1,0 +1,154 @@
+linux commands=>
+update package->                sudo apt.get update
+install package->                sudo apt.get install linux-image-extra-$(uname -r)linux-image-extra-virtual
+
+install docker->                sudo apt.get install docker-engine
+start docker service->          sudo service docker start
+pull image from docker hub->     sudo docker pull myimg
+
+build container->                Run myimg container
+                                 sudo docker run  -it myimg
+
+existing package up to date ->      sudo yum update
+run docker installation  script ->   curl -fsSl https://get.docker.com/ | sh
+                         
+sudo docker run myimage
+---------------------------------------------------------------------------------------------------------
+dockerfile commands=>
+
+comment=>#
+command=>Run echo "wellcome"
+        
+         from myImg
+run apt -get install -y rial
+cmd "echo" "wellcome to"
+
+entrypoint echo
+  copy files from source and paste into target               ->add /source-folder/target-folder
+set environment                                              ->env server-env1
+                    ->WORKDIR/myworkfolder
+expose 8080
+
+who maintain all things  -> maintainer author_name
+user run a container   -> user 6622
+
+set custom path to store all files           =>volume ["my/files"]
+_____________________________________________________________________________________
+ubantu commands=> 
+                  ls
+                    $ cd documents/firstDemo->location of dockerfile
+
+get data from dockerfile            => cat dockerfile
+ build images outside dockerfile      => $ sudo docker build  -t myImg  .
+                                           sudo docker images
+                                           =>sudo docker run -p80:80 --name=App1container myApacheImg
+
+localhost:80
+
+install nginx =>           Run apt-get install -y nginx Add index.html urr/share/nginx/html/index.html
+
+see html data   -> cat index.html
+
+build custom image outside  dockerfile=>docker build -t myImg  .
+________________________________________________________---------------------------------
+Important docker commands  =>   
+                                  docker --version
+                                -> docker --help
+                    pull images  ->docker pull
+                   build custom images-> docker build 
+                  list all images  ->docker images
+                  execute image    ->docker run myImg
+                login on docker hub -> docker login
+  push image from local to docker hub-> docker push containerid/myImg
+                 
+                  -> docker tag myImg containerid/myImg
+
+docker run --rm -p 4200:4200 --name "myapp" demoimage
+create file   -> touch f1
+               ->cat f1
+
+
+export docker image into tar file  =>  docker export --output="latest.tar" myImage containerid
+import                            => docker import home/demo/downloads/demo.tgz
+
+
+--------------------------------------------------------------------
+container commands=>
+
+                           => docker container logs
+                            =>docker container logs 3456tyui
+                             =>docker container run 567yui8
+start any stop docker container => docker container start
+
+list all active containers  =>    docker ps
+list all container          =>     docker ps -a
+stop container              => docker stop 123rty  ->containerid
+kill container               => docker kill 123rty
+access running container    => docker exec -it 456tyu bash
+exit from container          => exit
+-------------------------------------------------------------------------------------------------
+Advance docker commands=>
+________________________
+
+docker compose=>
+build docker compose by yml=>     docker-compose build
+start docker compose/container=>   docker-compose up
+
+docker swarm=>  
+
+create docker swarm  =>                docker swarm init -advertise-addr 192.168.1.00
+join worker with docker manager=>      docker swarm join    (with token)
+
+docker service=>
+
+               list of services->   docker service ls
+scale no of containers          ->  docker service scale
+stop container                  ->docker service stop
+                                -> docker service logs
+find all workers/nodes           ->docker node ls
+create service                   ->docker service create --name "Ang-App" MyDemoImg
+find node                        -> docker service ps Ang-App
+app deploy on multiple hosts -> docker service create --name "Ang-App" -p 4200:4200 -node global MyIngDemo
+second node or other all nodes see details -> docker ps
+run on which ports and nodes    -> docker service ps Ang-App
+app run only some nodes        -> docker service create --name "Ang-App" -p 4200:4200 --replicas2 MyDemoImg
+scalling                        -> docker service scale Ang-App=5
+                                 ->docker service ps Ang-App
+
+manager shutdown                 ->docker node update --availability drain manager-1
+
+again set availability active     -> docker node update --availability active manager-1
+
+
+
+------------------------------------------------------------------------------------------------------------
+Docker for windows=>open windows powershell
+
+ check installation=>              docker --version
+run image =>                        docker run firstImg
+                                  -> docker images
+
+pull image=>                         docker pull firstImg
+run images/create container=>         docker run -it -d  firstImg
+show all containers =>                docker ps -a
+access container=>                     docker exec -it 78htyui
+
+create new image on local system =>   docker commit 78htyui  myrepo/myImg
+login                             => docker login
+
+push image into docker hub =>        docker push myRepo/myImg
+delete container  =>                  docker rm 789tyui
+delete image =>                           docker rmi 78img
+
+
+
+
+
+
+
+
+
+
+
+
+mansic123

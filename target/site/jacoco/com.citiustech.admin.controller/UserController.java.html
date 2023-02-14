@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>UserController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">adminms</a> &gt; <a href="index.source.html" class="el_package">com.citiustech.admin.controller</a> &gt; <span class="el_source">UserController.java</span></div><h1>UserController.java</h1><pre class="source lang-java linenums">package com.citiustech.admin.controller;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.citiustech.admin.entity.Employee;
+import com.citiustech.admin.entity.User;
+import com.citiustech.admin.exception.MyRandomException;
+import com.citiustech.admin.service.EmployeeService;
+import com.citiustech.admin.service.UserService;
+
+import lombok.extern.slf4j.Slf4j;
+
+@RestController
+@RequestMapping(&quot;/&quot;)
+@CrossOrigin(&quot;*&quot;)
+<span class="fc" id="L31">public class UserController {</span>
+	
+<span class="fc" id="L33">	private static final Logger LOGGER = LoggerFactory.getLogger(UserController.class);</span>
+
+	@Autowired
+	private UserService userService;
+	
+	
+	@PostMapping(value =&quot;/user&quot;,consumes = { MediaType.APPLICATION_JSON_VALUE }
+    , produces = { MediaType.APPLICATION_JSON_VALUE})
+	public ResponseEntity&lt;String&gt; saveUserDetails(@RequestBody Employee request){
+<span class="nc bnc" id="L42" title="All 2 branches missed.">		if(userService.isUserEmailPresent(request.getEmail())) {</span>
+<span class="nc" id="L43">			LOGGER.info(&quot;User found with email {} : &quot;, request.getEmail());</span>
+<span class="nc" id="L44">			throw new MyRandomException(&quot;User details already exists.&quot;);</span>
+		}
+<span class="nc" id="L46">		userService.save(request);</span>
+<span class="nc" id="L47">		return ResponseEntity.status(HttpStatus.CREATED).body(&quot;Employee details added successfully.&quot;);	</span>
+	}
+	
+	@GetMapping(value = &quot;/user&quot;)
+	public ResponseEntity&lt;Optional&lt;List&lt;User&gt;&gt;&gt; getAllUserDetails(){
+<span class="fc" id="L52">		Optional&lt;List&lt;User&gt;&gt; userList = userService.getAllUserDetails();</span>
+<span class="fc bfc" id="L53" title="All 2 branches covered.">		if(!userList.isPresent())</span>
+		{
+<span class="fc" id="L55">			LOGGER.debug(&quot;User does not exists.&quot;);</span>
+<span class="fc" id="L56">			return new ResponseEntity&lt;Optional&lt;List&lt;User&gt;&gt;&gt;(HttpStatus.NO_CONTENT);</span>
+		}
+<span class="fc" id="L58">		LOGGER.debug(&quot;Found user {}&quot;, userList);</span>
+<span class="fc" id="L59">		return new ResponseEntity&lt;Optional&lt;List&lt;User&gt;&gt;&gt;(userList,HttpStatus.OK);	</span>
+	}
+	
+	@PostMapping(value =&quot;/user/login&quot;,consumes = { MediaType.APPLICATION_JSON_VALUE }
+    , produces = { MediaType.APPLICATION_JSON_VALUE})
+	public ResponseEntity&lt;User&gt; login(@RequestBody User request){
+<span class="nc bnc" id="L65" title="All 2 branches missed.">		if(!userService.isUserEmailPresent(request.getEmail())) {</span>
+<span class="nc" id="L66">			LOGGER.info(&quot;User found with email {} : &quot;, request.getEmail());</span>
+<span class="nc" id="L67">			throw new MyRandomException(&quot;Invalid Username or Password&quot;);</span>
+		}
+<span class="nc" id="L69">		Optional&lt;User&gt; loggedInUser = userService.login(request);</span>
+<span class="nc bnc" id="L70" title="All 2 branches missed.">		if(!loggedInUser.isPresent()) {</span>
+<span class="nc" id="L71">			throw new MyRandomException(&quot;Invalid Username or Password.&quot;);</span>
+		}
+<span class="nc" id="L73">		return new ResponseEntity&lt;User&gt;(loggedInUser.get(),HttpStatus.OK);	</span>
+	}
+
+	/*@GetMapping(&quot;checkUserDetailsByemail/{email}&quot;)
+	public boolean getUserDetailsByEmail(@PathVariable(&quot;email&quot;) String email)
+	{
+
+		if(userService.findUserByEmail(email).isEmpty())
+		{
+			System.out.println(&quot;null&quot;);
+			return true;
+		}
+		else
+			
+			return false;
+
+	}*/
+	
+}
+
+
+       
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

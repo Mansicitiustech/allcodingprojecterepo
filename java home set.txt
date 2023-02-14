@@ -1,0 +1,10 @@
+set JAVA_HOME=
+
+mvnw clean install -Dmaven.test.skip
+
+mvnw spring-boot:run
+
+
+%JAVA_HOME%\bin
+
+rundll32.exe sysdm.cpl,EditEnvironmentVariables
