@@ -1,0 +1,21 @@
+
+    <app-not-found [visible]="!food" notFoundMessage="Product not found!" style="color: blue; font-weight: bold;" resetLinkText="Go to home page"></app-not-found>
+    <div class="container" *ngIf="food">
+    <img [src]="food.imageUrl" [alt]="food.name">
+
+<div class="details">
+    <div class="header"><span class="name">{{food.name}}</span>
+        <mat-icon [ngClass]="food.favorite ? '': 'not'" class="favorite">favorite</mat-icon>
+    </div>
+    <div class="star  {{food.star}}"><mat-icon style="color:yellow;">star</mat-icon></div>
+       
+   
+      <div class="origins"><span *ngFor="let origin of food.origins">{{origin}}</span></div>
+      <!--<div class="cook-time">-->
+      <div class="tag">
+         <app-tags [foodPageTags]="food.tags" justifyContent="start"></app-tags> 
+      </div>
+      <div class="cook-time"><span>time to cook about    <strong>{{food.cookTime}}</strong>     Minutes</span></div>
+      <div class="price"><span>{{food.price|currency}}</span></div>
+      <button mat-button (click)="addToCart()"  >Add to cart</button>
+</div></div>
