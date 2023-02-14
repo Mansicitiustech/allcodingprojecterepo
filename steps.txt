@@ -1,0 +1,9 @@
+whatever code you are having just so to commit it first follow below steps
+1) git init 
+2)git add .
+3)git commit -m  "whatever msg"
+----------------------------------------
+to pull code from organisation 
+
+1)git remote add upstream link
+2)git pull upstream master

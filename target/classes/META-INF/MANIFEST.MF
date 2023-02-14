@@ -1,6 +1,12 @@
 Manifest-Version: 1.0
+<<<<<<< HEAD
 Build-Jdk-Spec: 16
 Implementation-Title: CTHospital
 Implementation-Version: 0.0.1-SNAPSHOT
+=======
+Implementation-Title: passwordLoginApp
+Implementation-Version: 0.0.1-SNAPSHOT
+Build-Jdk-Spec: 1.8
+>>>>>>> d50826b9e252d9603fcd85a01547e3faf950a8c5
 Created-By: Maven Integration for Eclipse
 
