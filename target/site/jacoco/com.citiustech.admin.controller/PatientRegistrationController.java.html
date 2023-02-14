@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PatientRegistrationController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">adminms</a> &gt; <a href="index.source.html" class="el_package">com.citiustech.admin.controller</a> &gt; <span class="el_source">PatientRegistrationController.java</span></div><h1>PatientRegistrationController.java</h1><pre class="source lang-java linenums">package com.citiustech.admin.controller;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.citiustech.admin.entity.Employee;
+import com.citiustech.admin.entity.PatientRegistration;
+import com.citiustech.admin.exception.MyRandomException;
+import com.citiustech.admin.service.PatientRegistrationService;
+import com.citiustech.admin.service.UserService;
+@RestController
+@RequestMapping(&quot;/&quot;)
+@CrossOrigin(&quot;*&quot;)
+<span class="fc" id="L29">public class PatientRegistrationController {</span>
+
+<span class="fc" id="L31">	private static final Logger LOGGER = LoggerFactory.getLogger(PatientRegistrationController.class);</span>
+
+	@Autowired
+	private PatientRegistrationService patientService;
+	
+	@Autowired
+	private UserService userService;
+	
+	@PostMapping(value =&quot;/register-patient&quot;,consumes = { MediaType.APPLICATION_JSON_VALUE }
+    , produces = { MediaType.APPLICATION_JSON_VALUE})
+	public ResponseEntity&lt;String&gt; saveUserDetails(@RequestBody PatientRegistration request){
+<span class="nc bnc" id="L42" title="All 2 branches missed.">		if(userService.isUserEmailPresent(request.getEmail())) {</span>
+<span class="nc" id="L43">			LOGGER.info(&quot;User found with email {} : &quot;, request.getEmail());</span>
+<span class="nc" id="L44">			throw new MyRandomException(&quot;User details already exists.&quot;);</span>
+		}
+<span class="nc" id="L46">		patientService.save(request);</span>
+<span class="nc" id="L47">		return ResponseEntity.status(HttpStatus.CREATED).body(&quot;Patient registration completed successfully.&quot;);	</span>
+	}
+	
+	@GetMapping(value =&quot;/register-patient&quot;)
+	public ResponseEntity&lt;Optional&lt;List&lt;PatientRegistration&gt;&gt;&gt; getRegisteredPatientList(){
+<span class="nc" id="L52">		Optional&lt;List&lt;PatientRegistration&gt;&gt; patientList = patientService.getRegisteredPatientList();</span>
+<span class="nc bnc" id="L53" title="All 2 branches missed.">		if(!patientList.isPresent())</span>
+		{
+<span class="nc" id="L55">			LOGGER.debug(&quot;Patient does not exists.&quot;);</span>
+<span class="nc" id="L56">			return new ResponseEntity&lt;Optional&lt;List&lt;PatientRegistration&gt;&gt;&gt;(HttpStatus.NO_CONTENT);</span>
+		}
+<span class="nc" id="L58">		LOGGER.debug(&quot;Found Patient {}&quot;,patientList);</span>
+<span class="nc" id="L59">		return new ResponseEntity&lt;Optional&lt;List&lt;PatientRegistration&gt;&gt;&gt;(patientList,HttpStatus.OK);	</span>
+	}
+	
+	@GetMapping(value = &quot;/register-patient/approval-count&quot;)
+	public ResponseEntity&lt;Optional&lt;Integer&gt;&gt; getInactivePatientApprovalCount(){
+<span class="nc" id="L64">		Optional&lt;Integer&gt; approvalCount =patientService.getInactivePatientApprovalCount();</span>
+<span class="nc bnc" id="L65" title="All 2 branches missed.">		if(!approvalCount.isPresent())</span>
+		{
+<span class="nc" id="L67">			LOGGER.debug(&quot;Patient with Inactive status does not exists.&quot;);</span>
+<span class="nc" id="L68">			return new ResponseEntity&lt;Optional&lt;Integer&gt;&gt;(HttpStatus.NOT_FOUND);</span>
+		}
+<span class="nc" id="L70">		LOGGER.info(&quot;Found {}: &quot; ,approvalCount);</span>
+<span class="nc" id="L71">		return new ResponseEntity&lt;Optional&lt;Integer&gt;&gt;(approvalCount,HttpStatus.OK);	</span>
+	}
+	
+	@GetMapping(value = &quot;/register-patient/active&quot;)
+	public ResponseEntity&lt;Optional&lt;Integer&gt;&gt; getActivePatientApprovalCount(){
+<span class="nc" id="L76">		Optional&lt;Integer&gt; approvalCount =patientService.getActivePatientApprovalCount();</span>
+<span class="nc bnc" id="L77" title="All 2 branches missed.">		if(!approvalCount.isPresent())</span>
+		{
+<span class="nc" id="L79">			LOGGER.debug(&quot;Patient with Active status does not exists.&quot;);</span>
+<span class="nc" id="L80">			return new ResponseEntity&lt;Optional&lt;Integer&gt;&gt;(HttpStatus.NOT_FOUND);</span>
+		}
+<span class="nc" id="L82">		LOGGER.info(&quot;Found {}: &quot; ,approvalCount);</span>
+<span class="nc" id="L83">		return new ResponseEntity&lt;Optional&lt;Integer&gt;&gt;(approvalCount,HttpStatus.OK);	</span>
+	}
+	
+	@GetMapping(value = &quot;/register-patient/approval-list&quot;)
+	public ResponseEntity&lt;Optional&lt;List&lt;PatientRegistration&gt;&gt;&gt; getPatientApprovalList(){
+<span class="nc" id="L88">		Optional&lt;List&lt;PatientRegistration&gt;&gt; approvalList =patientService.getPatientApprovalList();</span>
+<span class="nc bnc" id="L89" title="All 2 branches missed.">		if(!approvalList.isPresent())</span>
+		{
+<span class="nc" id="L91">			LOGGER.debug(&quot;Patient with Inactive status does not exists.&quot;);</span>
+<span class="nc" id="L92">			return new ResponseEntity&lt;Optional&lt;List&lt;PatientRegistration&gt;&gt;&gt;(HttpStatus.NOT_FOUND);</span>
+		}
+<span class="nc" id="L94">		LOGGER.info(&quot;Found {}: &quot; ,approvalList);</span>
+<span class="nc" id="L95">		return new ResponseEntity&lt;Optional&lt;List&lt;PatientRegistration&gt;&gt;&gt;(approvalList,HttpStatus.OK);	</span>
+	}
+	
+	@PatchMapping(value =&quot;/register-patient/approve-registration&quot;)
+	public ResponseEntity&lt;PatientRegistration&gt; approvePatientRegistration(@RequestBody PatientRegistration request){
+		
+<span class="nc" id="L101">		Optional&lt;PatientRegistration&gt; patient = patientService.getById(request.getPatientId());</span>
+<span class="nc bnc" id="L102" title="All 2 branches missed.">		if(!patient.isPresent()) {</span>
+<span class="nc" id="L103">			LOGGER.debug(&quot;Patient with id does not exists.&quot;,request.getPatientId() );</span>
+<span class="nc" id="L104">			return new ResponseEntity&lt;PatientRegistration&gt;(HttpStatus.NOT_FOUND);</span>
+		}
+<span class="nc" id="L106">		PatientRegistration updatePatient =	patientService.updatePatient(request);</span>
+<span class="nc" id="L107">		return new ResponseEntity&lt;PatientRegistration&gt;(updatePatient,HttpStatus.OK);	</span>
+	}
+	
+	@GetMapping(value = &quot;/register-patient/patient-detaild/{userId}&quot;)
+	public ResponseEntity&lt;Optional&lt;PatientRegistration&gt;&gt; getPatientDetailsByUserId(@PathVariable long userId){
+<span class="nc" id="L112">		Optional&lt;PatientRegistration&gt; patientDetails =patientService.getPatientDetailsByUserId(userId);</span>
+<span class="nc bnc" id="L113" title="All 2 branches missed.">		if(!patientDetails.isPresent())</span>
+		{
+<span class="nc" id="L115">			LOGGER.debug(&quot;Patient with Inactive status does not exists.&quot;);</span>
+<span class="nc" id="L116">			return new ResponseEntity&lt;Optional&lt;PatientRegistration&gt;&gt;(HttpStatus.NOT_FOUND);</span>
+		}
+<span class="nc" id="L118">		LOGGER.info(&quot;Found {}: &quot; ,patientDetails);</span>
+<span class="nc" id="L119">		return new ResponseEntity&lt;Optional&lt;PatientRegistration&gt;&gt;(patientDetails,HttpStatus.OK);	</span>
+	}
+	
+	@GetMapping(value = &quot;/patient/active-list&quot;)
+	public ResponseEntity&lt;Optional&lt;List&lt;PatientRegistration&gt;&gt;&gt; findAllActivePatients(){
+<span class="nc" id="L124">		Optional&lt;List&lt;PatientRegistration&gt;&gt; activeList =patientService.findAllActivePatients();</span>
+<span class="nc bnc" id="L125" title="All 2 branches missed.">		if(!activeList.isPresent())</span>
+		{
+<span class="nc" id="L127">			LOGGER.debug(&quot;Patient with Inactive status does not exists.&quot;);</span>
+<span class="nc" id="L128">			return new ResponseEntity&lt;Optional&lt;List&lt;PatientRegistration&gt;&gt;&gt;(HttpStatus.NOT_FOUND);</span>
+		}
+<span class="nc" id="L130">		LOGGER.info(&quot;Found {}: &quot; ,activeList);</span>
+<span class="nc" id="L131">		return new ResponseEntity&lt;Optional&lt;List&lt;PatientRegistration&gt;&gt;&gt;(activeList,HttpStatus.OK);	</span>
+	}
+	
+	@PatchMapping(value =&quot;/inactivePatient&quot;)
+	public ResponseEntity&lt;PatientRegistration&gt; activeToInactiveStatus(@RequestBody PatientRegistration request){
+		
+<span class="nc" id="L137">		Optional&lt;PatientRegistration&gt; patientOptional = patientService.getById(request.getPatientId());</span>
+<span class="nc bnc" id="L138" title="All 2 branches missed.">		if(!patientOptional.isPresent()) {</span>
+<span class="nc" id="L139">			LOGGER.debug(&quot;Patient with id does not exists.&quot;,request.getPatientId() );</span>
+<span class="nc" id="L140">			return new ResponseEntity&lt;PatientRegistration&gt;(HttpStatus.NOT_FOUND);</span>
+		}
+<span class="nc" id="L142">		PatientRegistration patient =	patientService.activeToInactiveStatus(request);</span>
+<span class="nc" id="L143">		return new ResponseEntity&lt;PatientRegistration&gt;(patient,HttpStatus.OK);	</span>
+	}
+	
+//	@PatchMapping(value =&quot;/activePatient&quot;)
+//	public ResponseEntity&lt;Employee&gt; inactiveToActiveStatus(@RequestBody Employee request){
+//		
+//		Optional&lt;Employee&gt; employeeOptional = emplService.getById(request.getEmployeeId());
+//		if(!employeeOptional.isPresent()) {
+//			LOGGER.debug(&quot;Employee with id does not exists.&quot;,request.getEmployeeId() );
+//			return new ResponseEntity&lt;Employee&gt;(HttpStatus.NOT_FOUND);
+//		}
+//		Employee emp =	emplService.inactiveToActiveStatus(request);
+//		return new ResponseEntity&lt;Employee&gt;(emp,HttpStatus.OK);	
+//	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

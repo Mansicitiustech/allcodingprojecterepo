@@ -1,0 +1,22 @@
+mat-toolbar{border-bottom:2px solid blue ;}
+a{color: blue;}
+a:hover{background-color: darkblue;
+    color: cadetblue;
+}
+.container{
+    margin: 0 auto;
+margin-left: 0px;
+  
+}
+li{display: flex;}
+
+a.logo{
+   font-weight: bold; 
+   padding: 1em;
+
+}
+nav ul{list-style-type: none;}
+nav ul li a{
+   
+    display: inline-block;
+}

@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+<<<<<<< HEAD
   title = 'CTGeneralHospital';
+=======
+  title = 'foodorder';
+>>>>>>> 193508d28b130649fceef342a3d6417927463787
 }

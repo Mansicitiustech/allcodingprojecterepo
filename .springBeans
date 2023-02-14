@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beansProjectDescription>
+	<version>1</version>
+	<pluginVersion><![CDATA[3.9.12.202003180620-RELEASE]]></pluginVersion>
+	<configSuffixes>
+		<configSuffix><![CDATA[xml]]></configSuffix>
+	</configSuffixes>
+	<enableImports><![CDATA[false]]></enableImports>
+	<configs>
+<<<<<<< HEAD
+		<config>src/main/resources/appContext1.xml</config>
+		<config>src/main/resources/appDepartmentContext.xml</config>
+		<config>src/main/resources/innerBeanConfig.xml</config>
+		<config>src/main/resources/appContextCollection.xml</config>
+		<config>src/main/resources/appMergeCollections.xml</config>
+		<config>src/main/resources/appDepndsOnBean.xml</config>
+		<config>src/main/resources/appByNamesAutiwiring.xml</config>
+		<config>src/main/resources/appByTypeAutowire.xml</config>
+		<config>src/main/resources/appConstructorAutowire.xml</config>
+=======
+		<config>java:com.customer.PhoneContactsAppApplication</config>
+>>>>>>> ce704a7fd7463a7fbdc27e84aac4eacb0daeda00
+	</configs>
+	<autoconfigs>
+	</autoconfigs>
+	<configSets>
+	</configSets>
+</beansProjectDescription>
