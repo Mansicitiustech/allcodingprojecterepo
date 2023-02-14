@@ -1,0 +1,105 @@
+git config --global user.name "mansi chouhan"
+gir config  --global user.email "mansi.chouhan@gamil.com"
+git init
+git add   =>moved changes from working directory to staging area
+craete file demo.txt
+git status
+(now demo file is untrcaked or in working directory 
+git add demo.txt =/. add file in staging
+git commit -m "first commit of demo.txt"  =>add file in local repo
+git log  =>see the summary of commit message and we can track commit message and also show commit id
+git show commitid  => check the details with specific commit message
+
+//if i do some changes in file then again file enter in working directory ,so  use  git add demo.txt
+
+git add.   => add all files in staging area
+git ls-files =>which file is tracked by my git local repo
+ls -1rt      => get all files
+
+-----------------------------------------------------------------------------------------------
+remote repo commands=>
+git remote add origin link  =>link local repo with remote repo /add remote repo
+(origin ->   alias)
+git remote -v                =>check remote lik or not
+git push origin master  =>push code into remote repo
+git pull origin master   =>pull code from remote repo
+
+
+steps to connect local with remote=>
+git init 
+git add .
+git remote add origin link
+
+
+-----------------------------------------------------------------------------------
+parallel development/branching
+
+git branch                    => get all branch
+git branch branchname  =>create new branch
+git checkout specificbranchname  =>  switch to new branch
+git log specificbranchname       =>  find commits of specific branch
+git merge secondbranch          => merge secondbrach code into master branch (must available on master branch) 
+
+git log --oneline
+git log --oneline master
+
+git rebase master rebasebranch   =>all commits of master branch insert into rebasebranch,must be active on rebasebranch6gtt6
+
+rebase  =>create base of branch
+
+---------------------------------------------------------------------------------
+
+archive branch from local repo  =>
+
+git archive master --format=zip - output=../file name.zip
+git bundle create ../repo.bundler master
+
+git stash   =>store save all uncommited changes into a temporary location
+git stash clear   =>remove all stash entries from dirty working directory
+------------------------------------------------------------------------
+delete related commands=>
+
+git remote rm              =>remove remote repo
+git remote rm branchname   =>remove branch of remote repo
+git push origin namebranch  =>push local repo branch  into remote repo
+git push origin --delete  branchname
+git branch -d branchname    =>delete local repo branch
+git branch -m oldbranchname newbranchname  =>rename local branch name
+git push origin:oldname:newname  =>rename remotebbranch name 
+
+git push -d origin:branchname  =>delete remote branch
+
+git push -f  origin branchname  =>forcefully push branch on remote repo
+git fetch origin master          => fetch
+
+
+compare commands=>
+git diff    =>for comparison
+diff first.txt decond.txt         =>compare two files
+
+git diff -cached first.txt       =>compare with remote repo
+git diff commit1id  commit2id     =>compare two commits
+git diff commit1id  file1.txt     =>compare commit with file
+
+----------------------------------------------------------------------------
+connect remote with upstream repo and local repo  =>
+
+step 1=> fork repo
+step2   => git remote add upstream link
+
+git fetch upstream  => fetch upstream data
+git merge upstream/branch1 localbranch    =>merge upstream branch with local repo branch
+git pull upstream master
+
+push code from local to upstream=>
+
+step1   :-       git push origin master   =>push on remote repo
+step2   :-       create pull request  =>
+click on pull request  ->    new pull request     ->compare accross forks    ->create pull request
+
+git rebase --abort   => completely undo the rebase	
+
+
+
+
+

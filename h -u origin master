@@ -1,0 +1,144 @@
+[33mcommit 0c9c736e88dd3eedc6513c39ad8503a65edf8af6[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: mansi chouhan <mansi.chouhan@citiustech.com>
+Date:   Tue Feb 14 18:05:08 2023 +0530
+
+    adminms -app
+
+[33mcommit e1321d024b358f0a1cf4fbdd9594224238d039be[m[33m ([m[1;31morigin/master[m[33m)[m
+Merge: 2ace27e c822bb7
+Author: mansi chouhan <mansi.chouhan@citiustech.com>
+Date:   Tue Feb 14 17:46:43 2023 +0530
+
+    Merge branch 'master' of https://github.com/Mansicitiustech/allcodingprojecterepo
+
+[33mcommit 2ace27e817a2125b90ab6dd8d27c2a2331cc82de[m
+Author: mansi chouhan <mansi.chouhan@citiustech.com>
+Date:   Tue Feb 14 17:45:56 2023 +0530
+
+    employeems -app
+
+[33mcommit c822bb7a6e8580ff8d974b2b27087c8a41085f6a[m
+Merge: 998d279 d50826b
+Author: mansi chouhan <mansi.chouhan@citiustech.com>
+Date:   Tue Feb 14 16:42:03 2023 +0530
+
+    scheduling app
+
+[33mcommit 998d27983f10049315b5e0ef920eef99ac6c5e9f[m
+Author: mansi chouhan <mansi.chouhan@citiustech.com>
+Date:   Tue Feb 14 16:38:49 2023 +0530
+
+    scheduling app
+
+[33mcommit d50826b9e252d9603fcd85a01547e3faf950a8c5[m
+Merge: 653ea9e e438e6f
+Author: mansi chouhan <mansi.chouhan@citiustech.com>
+Date:   Tue Feb 14 16:00:53 2023 +0530
+
+    patient app
+
+[33mcommit 653ea9ee460fa01a77b4f3303d5ee790fbd4b368[m
+Author: mansi chouhan <mansi.chouhan@citiustech.com>
+Date:   Tue Feb 14 15:58:05 2023 +0530
+
+    patient app
+
+[33mcommit e438e6f3d8d6113ec08c1df3fdd78b65f11c614f[m
+Merge: fe3fb1c 69834e2
+Author: mansi chouhan <mansi.chouhan@citiustech.com>
+Date:   Tue Feb 14 15:30:36 2023 +0530
+
+    usermanagement app -commit
+
+[33mcommit fe3fb1ca0ce55c8cbcbd62a67baa050a9d55b764[m
+Author: mansi chouhan <mansi.chouhan@citiustech.com>
+Date:   Tue Feb 14 15:24:48 2023 +0530
+
+    usermanagement commit
+
+[33mcommit 69834e20888bc6c24bb486928fcb8185a250fce0[m
+Author: Mansicitiustech <94035721+Mansicitiustech@users.noreply.github.com>
+Date:   Tue Feb 14 14:38:51 2023 +0530
+
+    Add files via upload
+
+[33mcommit 3a9dd79b296dc03a8bf9959227913fbde42d36f3[m
+Author: Mansicitiustech <94035721+Mansicitiustech@users.noreply.github.com>
+Date:   Tue Feb 14 14:38:03 2023 +0530
+
+    Add files via upload
+
+[33mcommit 4cc74886a654f8b1e9d0443fd8d2c26e6bd978ce[m
+Author: Mansicitiustech <94035721+Mansicitiustech@users.noreply.github.com>
+Date:   Tue Feb 14 14:36:39 2023 +0530
+
+    Add files via upload
+
+[33mcommit 621e113baea52f5eabb7102a36e800cd161b4f4e[m
+Author: Mansicitiustech <94035721+Mansicitiustech@users.noreply.github.com>
+Date:   Tue Feb 14 14:36:09 2023 +0530
+
+    Add files via upload
+
+[33mcommit 776416b7a3bc52a6981e9289024cbb861244223f[m
+Author: Mansicitiustech <94035721+Mansicitiustech@users.noreply.github.com>
+Date:   Tue Feb 14 14:35:39 2023 +0530
+
+    Add files via upload
+
+[33mcommit f77da93675092a01c298506bd87a44c293690b63[m
+Author: Mansicitiustech <94035721+Mansicitiustech@users.noreply.github.com>
+Date:   Tue Feb 14 14:33:44 2023 +0530
+
+    Add files via upload
+
+[33mcommit 2af5caa400198a499cc3dfc6ee7d8ed9fa5fbf12[m
+Author: Mansicitiustech <94035721+Mansicitiustech@users.noreply.github.com>
+Date:   Tue Feb 14 14:32:43 2023 +0530
+
+    Add files via upload
+
+[33mcommit b689f26a5b3f4a17807df056e5e68d6324dc5a17[m
+Merge: b90c334 c061ad2
+Author: mansi chouhan <mansi.chouhan@citiustech.com>
+Date:   Tue Feb 14 14:17:06 2023 +0530
+
+    fourth commit
+
+[33mcommit b90c33402d85f1466594c055ade11373bfe8f8ed[m
+Author: mansi chouhan <mansi.chouhan@citiustech.com>
+Date:   Tue Feb 14 14:00:33 2023 +0530
+
+    fourth commit
+
+[33mcommit c061ad24632c39bdff00501f4c71ad5cf10506f1[m
+Merge: 2b62684 352885e
+Author: mansi chouhan <mansi.chouhan@citiustech.com>
+Date:   Tue Feb 14 13:46:50 2023 +0530
+
+    thirdcommit
+
+[33mcommit 2b626844fb386940bcf5a45352b43422187a2dfc[m
+Author: mansi chouhan <mansi.chouhan@citiustech.com>
+Date:   Tue Feb 14 13:42:44 2023 +0530
+
+    third commit
+
+[33mcommit 352885ef00df60031d8ed210ce5483e56b472d4d[m
+Merge: ab91bc4 41f027b
+Author: mansi chouhan <mansi.chouhan@citiustech.com>
+Date:   Mon Feb 13 19:37:56 2023 +0530
+
+    Merge branch 'master' of https://github.com/Mansicitiustech/allcodingprojecterepo
+
+[33mcommit ab91bc41c501f8480977d08108f2091f050ddd0a[m
+Author: mansi chouhan <mansi.chouhan@citiustech.com>
+Date:   Mon Feb 13 19:15:53 2023 +0530
+
+    first commit
+
+[33mcommit 41f027befff080b5dd5e1950952f6f9a9ab69583[m
+Author: Mansicitiustech <94035721+Mansicitiustech@users.noreply.github.com>
+Date:   Mon Feb 13 18:56:48 2023 +0530
+
+    Create first
