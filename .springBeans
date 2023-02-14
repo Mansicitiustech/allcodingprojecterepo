@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beansProjectDescription>
+	<version>1</version>
+	<pluginVersion><![CDATA[3.9.12.202003180620-RELEASE]]></pluginVersion>
+	<configSuffixes>
+		<configSuffix><![CDATA[xml]]></configSuffix>
+	</configSuffixes>
+	<enableImports><![CDATA[false]]></enableImports>
+	<configs>
+		<config>src/main/resources/appContext1.xml</config>
+		<config>src/main/resources/appDepartmentContext.xml</config>
+		<config>src/main/resources/innerBeanConfig.xml</config>
+		<config>src/main/resources/appContextCollection.xml</config>
+		<config>src/main/resources/appMergeCollections.xml</config>
+		<config>src/main/resources/appDepndsOnBean.xml</config>
+		<config>src/main/resources/appByNamesAutiwiring.xml</config>
+		<config>src/main/resources/appByTypeAutowire.xml</config>
+		<config>src/main/resources/appConstructorAutowire.xml</config>
+	</configs>
+	<autoconfigs>
+	</autoconfigs>
+	<configSets>
+	</configSets>
+</beansProjectDescription>
