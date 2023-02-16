@@ -1,0 +1,26 @@
+<<<<<<< HEAD
+C:\Users\MansiC\Documents\practice\my-skill-improvement\userDetailsApp\src\main\java\com\ct\model\Country.java
+C:\Users\MansiC\Documents\practice\my-skill-improvement\userDetailsApp\src\main\java\com\ct\model\State.java
+C:\Users\MansiC\Documents\practice\my-skill-improvement\userDetailsApp\src\main\java\com\ct\model\City.java
+C:\Users\MansiC\Documents\practice\my-skill-improvement\userDetailsApp\src\main\java\com\ct\UserDetailsAppApplication.java
+C:\Users\MansiC\Documents\practice\my-skill-improvement\userDetailsApp\src\main\java\com\ct\model\UserDetails.java
+=======
+<<<<<<< HEAD
+C:\Users\MansiC\Documents\practice\my-skill-improvement\userManagementApp\src\main\java\com\ct\model\User.java
+C:\Users\MansiC\Documents\practice\my-skill-improvement\userManagementApp\src\main\java\com\ct\model\Password.java
+C:\Users\MansiC\Documents\practice\my-skill-improvement\userManagementApp\src\main\java\com\ct\repo\UserRepo.java
+C:\Users\MansiC\Documents\practice\my-skill-improvement\userManagementApp\src\main\java\com\ct\serviceImpl\UserServiceImpl.java
+C:\Users\MansiC\Documents\practice\my-skill-improvement\userManagementApp\src\main\java\com\ct\model\UserRegistration.java
+C:\Users\MansiC\Documents\practice\my-skill-improvement\userManagementApp\src\main\java\com\ct\repo\UserRegistrationRepo.java
+C:\Users\MansiC\Documents\practice\my-skill-improvement\userManagementApp\src\main\java\com\ct\PasswordLoginAppApplication.java
+C:\Users\MansiC\Documents\practice\my-skill-improvement\userManagementApp\src\main\java\com\ct\service\UserService.java
+=======
+C:\Users\MansiC\Documents\practice\my-skill-improvement\customerReport\src\main\java\com\ct\model\SearchRequest.java
+C:\Users\MansiC\Documents\practice\my-skill-improvement\customerReport\src\main\java\com\ct\CustomerReportApplication.java
+C:\Users\MansiC\Documents\practice\my-skill-improvement\customerReport\src\main\java\com\ct\model\CustomerPlanDetails.java
+C:\Users\MansiC\Documents\practice\my-skill-improvement\customerReport\src\main\java\com\ct\controller\ReportGenerateController.java
+C:\Users\MansiC\Documents\practice\my-skill-improvement\customerReport\src\main\java\com\ct\service\ReportGenerateService.java
+C:\Users\MansiC\Documents\practice\my-skill-improvement\customerReport\src\main\java\com\ct\repo\CustomerPlanDetailsRepo.java
+C:\Users\MansiC\Documents\practice\my-skill-improvement\customerReport\src\main\java\com\ct\serviceImpl\ReportGenerateServiceImpl.java
+>>>>>>> 352885ef00df60031d8ed210ce5483e56b472d4d
+>>>>>>> c061ad24632c39bdff00501f4c71ad5cf10506f1
