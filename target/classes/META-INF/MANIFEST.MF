@@ -1,6 +1,23 @@
 Manifest-Version: 1.0
+<<<<<<< HEAD
 Implementation-Title: passwordLoginApp
 Implementation-Version: 0.0.1-SNAPSHOT
 Build-Jdk-Spec: 1.8
+=======
+<<<<<<< HEAD
+Built-By: MansiC
+Build-Jdk: 1.8.0_301
+=======
+<<<<<<< HEAD
+Build-Jdk-Spec: 16
+Implementation-Title: CTHospital
+Implementation-Version: 0.0.1-SNAPSHOT
+=======
+Implementation-Title: passwordLoginApp
+Implementation-Version: 0.0.1-SNAPSHOT
+Build-Jdk-Spec: 1.8
+>>>>>>> d50826b9e252d9603fcd85a01547e3faf950a8c5
+>>>>>>> ce704a7fd7463a7fbdc27e84aac4eacb0daeda00
+>>>>>>> 83160e3ff6de1d6654831e4d81bd50eb82f100c4
 Created-By: Maven Integration for Eclipse
 

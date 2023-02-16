@@ -1,4 +1,11 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 83160e3ff6de1d6654831e4d81bd50eb82f100c4
 C:\Users\MansiC\Documents\practice\my-skill-improvement\userDetailsApp\src\main\java\com\ct\model\Country.java
 C:\Users\MansiC\Documents\practice\my-skill-improvement\userDetailsApp\src\main\java\com\ct\model\State.java
 C:\Users\MansiC\Documents\practice\my-skill-improvement\userDetailsApp\src\main\java\com\ct\model\City.java
@@ -6,6 +13,10 @@ C:\Users\MansiC\Documents\practice\my-skill-improvement\userDetailsApp\src\main\
 C:\Users\MansiC\Documents\practice\my-skill-improvement\userDetailsApp\src\main\java\com\ct\model\UserDetails.java
 =======
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 69834e20888bc6c24bb486928fcb8185a250fce0
+>>>>>>> 83160e3ff6de1d6654831e4d81bd50eb82f100c4
 C:\Users\MansiC\Documents\practice\my-skill-improvement\userManagementApp\src\main\java\com\ct\model\User.java
 C:\Users\MansiC\Documents\practice\my-skill-improvement\userManagementApp\src\main\java\com\ct\model\Password.java
 C:\Users\MansiC\Documents\practice\my-skill-improvement\userManagementApp\src\main\java\com\ct\repo\UserRepo.java
@@ -15,6 +26,10 @@ C:\Users\MansiC\Documents\practice\my-skill-improvement\userManagementApp\src\ma
 C:\Users\MansiC\Documents\practice\my-skill-improvement\userManagementApp\src\main\java\com\ct\PasswordLoginAppApplication.java
 C:\Users\MansiC\Documents\practice\my-skill-improvement\userManagementApp\src\main\java\com\ct\service\UserService.java
 =======
+<<<<<<< HEAD
+=======
+>>>>>>> 97be0521fc24c70d1891d419f71c687dec3219ae
+>>>>>>> 83160e3ff6de1d6654831e4d81bd50eb82f100c4
 C:\Users\MansiC\Documents\practice\my-skill-improvement\customerReport\src\main\java\com\ct\model\SearchRequest.java
 C:\Users\MansiC\Documents\practice\my-skill-improvement\customerReport\src\main\java\com\ct\CustomerReportApplication.java
 C:\Users\MansiC\Documents\practice\my-skill-improvement\customerReport\src\main\java\com\ct\model\CustomerPlanDetails.java
@@ -22,5 +37,16 @@ C:\Users\MansiC\Documents\practice\my-skill-improvement\customerReport\src\main\
 C:\Users\MansiC\Documents\practice\my-skill-improvement\customerReport\src\main\java\com\ct\service\ReportGenerateService.java
 C:\Users\MansiC\Documents\practice\my-skill-improvement\customerReport\src\main\java\com\ct\repo\CustomerPlanDetailsRepo.java
 C:\Users\MansiC\Documents\practice\my-skill-improvement\customerReport\src\main\java\com\ct\serviceImpl\ReportGenerateServiceImpl.java
+<<<<<<< HEAD
 >>>>>>> 352885ef00df60031d8ed210ce5483e56b472d4d
 >>>>>>> c061ad24632c39bdff00501f4c71ad5cf10506f1
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> 352885ef00df60031d8ed210ce5483e56b472d4d
+<<<<<<< HEAD
+=======
+>>>>>>> c061ad24632c39bdff00501f4c71ad5cf10506f1
+>>>>>>> 69834e20888bc6c24bb486928fcb8185a250fce0
+>>>>>>> 97be0521fc24c70d1891d419f71c687dec3219ae
+>>>>>>> 83160e3ff6de1d6654831e4d81bd50eb82f100c4

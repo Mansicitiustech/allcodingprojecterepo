@@ -1,0 +1,595 @@
+
+<div [hidden]="section1">
+  <mat-stepper linear #stepper>
+    <mat-step [editable]="isEditable">
+      <form [formGroup]="form"> 
+        <ng-template matStepLabel>Demographic and Emergency Contact Information</ng-template>
+        <div class="bounds">
+          <div class="content" fxLayout="row" fxLayout.xs="column" fxFlexFill>
+            <div fxFlex="50" class="sec1" fxFlex.xs="55">
+        <mat-card>
+          <mat-card-content>
+            <h1 class="head">Demographic Details</h1>
+            <mat-form-field appearance="fill" class="pad w">
+              <mat-label>First Name*</mat-label>
+              <input matInput formControlName="firstName" /> 
+              <mat-hint
+              class="fielderror"
+              *ngIf="
+                (formControl.firstName.touched || submitted) &&
+                formControl.firstName.errors?.required
+              "
+            >
+              first Name is required
+              </mat-hint>
+              </mat-form-field
+            >&nbsp; &nbsp;
+            <mat-form-field appearance="fill" class="pad w">
+              <mat-label>Last Name*</mat-label>
+              <input matInput formControlName="lastName" />
+              <mat-hint
+              class="fielderror"
+              *ngIf="
+                (formControl.lastName.touched || submitted) &&
+                formControl.lastName.errors?.required
+              "
+            >
+              Last Name is required
+              </mat-hint>
+            </mat-form-field>
+  
+            <mat-form-field appearance="fill" class="pad date w">
+              <mat-label>Choose a date*</mat-label>
+              <input
+                matInput
+                [matDatepicker]="picker"
+                formControlName="dateOfBirth"
+                [max]="today"
+              />
+              <mat-datepicker-toggle
+                matSuffix
+                [for]="picker"
+              ></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+              <mat-hint
+              class="fielderror"
+              *ngIf="
+                (formControl.dateOfBirth.touched || submitted) &&
+                formControl.dateOfBirth.errors?.required
+              "
+            >
+              Date of Birth is required
+              </mat-hint>
+              </mat-form-field
+            >&nbsp; &nbsp;
+            <mat-form-field appearance="fill" class="pad w">
+              <mat-label>Mobile No*</mat-label>
+              <input matInput formControlName="mobileNo" /> 
+              <mat-hint
+                      class="fielderror"
+                      *ngIf="
+                        (formControl.mobileNo.touched || submitted) &&
+                        formControl.mobileNo.errors?.required
+                      "
+                    >
+                      Mobile No is required
+                      </mat-hint>
+                      <mat-hint
+              class="fielderror"
+              *ngIf="formControl.mobileNo.errors?.minlength"
+            >
+              valid number required
+            </mat-hint>
+            <mat-hint
+            class="fielderror"
+            *ngIf="formControl.mobileNo.errors?.maxlength"
+          >
+            valid number is required
+          </mat-hint>
+              
+              </mat-form-field
+            ><br />
+            <div>
+              <mat-radio-group
+                aria-label="Select an option"
+                formControlName="gender"
+              >
+                <mat-label>Gender :</mat-label>&nbsp;
+  
+                <mat-radio-button value="Male">Male</mat-radio-button>&nbsp;
+                &nbsp;
+                <mat-radio-button value="Female">Female</mat-radio-button>
+              </mat-radio-group>
+            </div>
+            <br />
+            <mat-form-field appearance="fill" class="pad w">
+              <mat-label>Race</mat-label>
+              <!-- <input matInput formControlName="race" /> -->
+              <mat-select formControlName="race">
+                <mat-option *ngFor="let race of races" value="{{ race }}">{{
+                  race
+                }}</mat-option>
+              </mat-select> 
+              <mat-hint
+              class="fielderror"
+              *ngIf="
+                (formControl.race.touched || submitted) &&
+                formControl.race.errors?.required
+              "
+            >
+              Race is required
+              </mat-hint>
+              </mat-form-field
+            >&nbsp; &nbsp;
+            <mat-form-field appearance="fill" class="pad w">
+              <mat-label>Ethnicity</mat-label>
+              <!-- <input matInput formControlName="ethnicity" /> -->
+              <mat-select formControlName="ethnicity">
+                <mat-option
+                  *ngFor="let ethnicity of ethnicities"
+                  value="{{ ethnicity }}"
+                  >{{ ethnicity }}</mat-option
+                >
+              </mat-select>
+              <mat-hint
+              class="fielderror"
+              *ngIf="
+                (formControl.ethnicity.touched || submitted) &&
+                formControl.ethnicity.errors?.required
+              "
+            >
+              Ethnicity is required
+              </mat-hint>
+            </mat-form-field>
+            <div class="example-container">
+              <mat-form-field
+                appearance="fill"
+                class="example-full-width wid pad"
+              >
+                <mat-label>Enter your email</mat-label>
+                <input
+                  matInput
+                  placeholder="pat@example.com"
+                  formControlName="email"
+                />
+                <mat-hint
+              class="fielderror"
+              *ngIf="
+                (formControl.email.touched || submitted) &&
+                formControl.email.errors?.required
+              "
+            >
+              Email is required
+              </mat-hint>
+              <mat-hint
+              class="fielderror"
+              *ngIf="formControl.email.errors?.email"
+            >
+              email must be valid
+            </mat-hint>
+              </mat-form-field>
+            </div>
+            <div class="example-container">
+              <mat-form-field appearance="fill">
+                <mat-label>Known Languages</mat-label>
+                <mat-select formControlName="language" multiple>
+                  <mat-select-trigger>
+                    {{
+                      form.get("language").value
+                        ? form.get("language").value[0]
+                        : ""
+                    }}
+                    <span
+                      *ngIf="form.get('language').value?.length > 1"
+                      class="example-additional-selection"
+                    >
+                      (+{{ form.get("language").value.length - 1 }}
+                      {{
+                        form.get("language").value.length === 2
+                          ? "other"
+                          : "others"
+                      }})
+                    </span>
+                  </mat-select-trigger>
+                  <mat-option
+                    *ngFor="let language of languageList"
+                    [value]="language"
+                    >{{ language }}</mat-option
+                  >
+                </mat-select>
+                <mat-hint
+              class="fielderror"
+              *ngIf="
+                (formControl.language.touched || submitted) &&
+                formControl.language.errors?.required
+              "
+            >
+              language is required
+              </mat-hint>
+              </mat-form-field>
+            </div>
+  
+            <p>
+              <mat-form-field
+                class="example-full-width wid"
+                appearance="fill"
+              >
+                <mat-label>Address</mat-label>
+                <textarea
+                  matInput
+                  placeholder="Ex. 100 Main St"
+                  formControlName="address"
+                  [(ngModel)]="paddress"
+                ></textarea>
+                <mat-hint
+              class="fielderror"
+              *ngIf="
+                (formControl.address.touched || submitted) &&
+                formControl.address.errors?.required
+              "
+            >
+              address is required
+              </mat-hint>
+              </mat-form-field>
+            </p>
+            <br />
+          </mat-card-content>
+        </mat-card>
+            </div>
+            <div fxFlex="50" class="sec2" fxFlex.xs="40">
+              <mat-card>
+                <mat-card-content>
+                  <h1 class="head">Emergency Contact Information</h1>
+                  <div formGroupName="emergencyContactDetails">
+                    <mat-form-field appearance="fill" class="pad w">
+                      <mat-label>First Name*</mat-label>
+                      <input
+                        matInput
+                        formControlName="firstName"
+                      /> 
+                      <mat-hint
+                      class="fielderror"
+                      *ngIf="
+                        (formEmergencyControl.firstName.touched || submitted) &&
+                        formEmergencyControl.firstName.errors?.required
+                      "
+                    >
+                      first Name is required
+                      </mat-hint>
+                      </mat-form-field
+                    >&nbsp; &nbsp;
+                    <mat-form-field appearance="fill" class="pad w">
+                      <mat-label>Last Name*</mat-label>
+                      <input matInput formControlName="lastName" />
+                      <mat-hint
+                      class="fielderror"
+                      *ngIf="
+                        (formEmergencyControl.lastName.touched || submitted) &&
+                        formEmergencyControl.lastName.errors?.required
+                      "
+                    >
+                      Last Name is required
+                      </mat-hint>
+                    </mat-form-field>
+                    <mat-form-field appearance="fill" class="pad w">
+                      <mat-label>Relationship*</mat-label>
+                      <mat-select formControlName="ralationship">
+                        <mat-option
+                          *ngFor="let ralationship of list"
+                          value="{{ ralationship }}"
+                          >{{ ralationship }}</mat-option
+                        >
+                      </mat-select> 
+                      <mat-hint
+                      class="fielderror"
+                      *ngIf="
+                        (formEmergencyControl.ralationship.touched || submitted) &&
+                        formEmergencyControl.ralationship.errors?.required
+                      "
+                    >
+                      Relationship is required
+                      </mat-hint>
+                      </mat-form-field
+                    >&nbsp; &nbsp;
+                    <mat-form-field appearance="fill" class="pad w">
+                      <mat-label>Mobile No*</mat-label>
+                      <input matInput formControlName="mobileNo" />
+                      <mat-hint
+                      class="fielderror"
+                      *ngIf="
+                        (formEmergencyControl.mobileNo.touched || submitted) &&
+                        formEmergencyControl.mobileNo.errors?.required
+                      "
+                    >
+                      Mobile No is required
+                      </mat-hint>
+                      <mat-hint
+              class="fielderror"
+              *ngIf="formEmergencyControl.mobileNo.errors?.minlength"
+            >
+              valid number required
+            </mat-hint>
+            <mat-hint
+            class="fielderror"
+            *ngIf="formEmergencyControl.mobileNo.errors?.maxlength"
+          >
+            valid number is required
+          </mat-hint>
+                    </mat-form-field>
+                    <div class="example-container">
+                      <mat-form-field
+                        appearance="fill"
+                        class="example-full-width wid"
+                      >
+                        <mat-label>Enter your email</mat-label>
+                        <input
+                          matInput
+                          placeholder="pat@example.com"
+                          required
+                          formControlName="email"
+                        />
+                        <mat-hint
+                      class="fielderror"
+                      *ngIf="
+                        (formEmergencyControl.email.touched || submitted) &&
+                        formEmergencyControl.email.errors?.required
+                      "
+                    >
+                      Email is required
+                      </mat-hint>
+                      <mat-hint
+              class="fielderror"
+              *ngIf="formEmergencyControl.email.errors?.email"
+            >
+              email must be valid
+            </mat-hint>
+                      </mat-form-field>
+                    </div>
+                    <mat-checkbox
+                      class="example-margin"
+                      id="checkBox"
+                      (click)="chackBox()"
+                      >Same as per patient</mat-checkbox
+                    >
+    
+                    <p>
+                      <mat-form-field
+                        class="example-full-width wid"
+                        appearance="fill"
+                      >
+                        <mat-label>Address</mat-label>
+                        <textarea
+                          matInput
+                          placeholder="Ex. 100 Main St"
+                          formControlName="address"
+                          [(ngModel)]="eaddress"
+                        ></textarea>
+                        <mat-hint
+                      class="fielderror"
+                      *ngIf="
+                        (formEmergencyControl.address.touched || submitted) &&
+                        formEmergencyControl.address.errors?.required
+                      "
+                    >
+                      address is required
+                      </mat-hint>
+                      </mat-form-field>
+                    </p>
+                    <div>
+                      <mat-radio-group
+                        aria-label="Select an option"
+                        formControlName="access"
+                      >
+                        <mat-label
+                          >Do you need to access patient portal? :</mat-label
+                        >
+    
+                        <mat-radio-button value="Yes">Yes</mat-radio-button>&nbsp;
+                        &nbsp;
+                        <mat-radio-button value="No">No</mat-radio-button>
+                      </mat-radio-group>
+                    </div>
+                  </div>
+    
+                  <br />
+                  <div [hidden]="isRegister">
+                    <button
+                      mat-raised-button
+                      color="primary"
+                      style="background-color: #03a66a; width: 50vh"
+                      class="example-full-width"
+                      type="button"
+                      matTooltip="Click here to submit patientDetails"
+                      mat-stroked-button
+                      class="example-button"
+                      matTooltipClass="example-tooltip-red"
+                      (click)="submitDetails()"
+                      matStepperNext
+                      [disabled]="form.invalid"
+                    >
+                      Submit
+                    </button>
+                  </div>
+                </mat-card-content>
+              </mat-card>
+            </div>
+            
+          </div>
+          
+          </div>
+      </form>
+    </mat-step>
+    <mat-step >
+      <form [formGroup]="allergyForm"> 
+        <ng-template matStepLabel>Allergies</ng-template>
+  
+              <!-- <mat-form-field appearance="fill" class="pad w">
+                <mat-label>AllergyId*</mat-label>
+                <mat-select formControlName="allergyId">
+                  <mat-option
+                    *ngFor="let allergydata of allergyI"
+                    value="{{ allergydata }}"
+                    >{{ allergydata }}</mat-option
+                  >
+                </mat-select> </mat-form-field
+              >&nbsp; &nbsp; -->
+              <mat-form-field
+                appearance="fill"
+                class="example-full-width pad w"
+              >
+                <mat-label>Allergy Type</mat-label>
+  
+                <mat-select  formControlName="allergyType" (ngModelChange)="onChangeType($event)">
+                  <mat-option
+                    *ngFor="let allergyType of allergyT"
+                    value="{{ allergyType }}"
+                    
+                    >{{ allergyType }}</mat-option
+                  >
+                </mat-select>
+              </mat-form-field>
+              &nbsp; &nbsp;
+              <mat-form-field
+                appearance="fill"
+                class="example-full-width pad w"
+              >
+                <mat-label>Allergy Name</mat-label>
+  
+                <mat-select formControlName="allergyName">
+                  <mat-option
+                    *ngFor="let allergyName of allergyN"
+                    value="{{ allergyName }}"
+                    >{{ allergyName }}</mat-option
+                  >
+                </mat-select> </mat-form-field
+              >&nbsp; &nbsp;
+  
+              <mat-form-field
+                appearance="fill"
+                class="example-full-width pad w"
+              >
+                <mat-label>Allergy Description</mat-label>
+                <input matInput  formControlName="allergyDescription"/>
+              </mat-form-field>&nbsp; &nbsp;
+              <mat-form-field
+                appearance="fill"
+                class="example-full-width wid"
+              >
+                <mat-label>Allergy clinical information</mat-label>
+                <input matInput  formControlName="clinicalInformation"/>
+              </mat-form-field>
+              <button
+                mat-raised-button
+                color="primary"
+                type="button"
+                (click)="pushAllergy()"
+                style="background-color: #03a66a; margin: 5px"
+              >
+                <mat-icon>add</mat-icon>
+              </button>
+              <button
+                mat-raised-button
+                color="primary"
+                type="button"
+                (click)="submitAllergy()"
+                
+                style="background-color: #03a66a; margin: 5px;width: 50%;"
+              >
+                <mat-icon>done</mat-icon>
+              </button>
+            </form>
+        <br>
+        
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <!-- meetingTitle Column -->
+    <!-- <ng-container matColumnDef="AllergyId">
+      <th mat-header-cell *matHeaderCellDef>AllergyId</th>
+      <td mat-cell *matCellDef="let element">{{ element.allergyId }}</td>
+    </ng-container> -->
+
+    <!-- physician Column -->
+    <ng-container matColumnDef="AllergyType">
+      <th mat-header-cell *matHeaderCellDef>AllergyType</th>
+      <td mat-cell *matCellDef="let element">{{ element.allergyType }}</td>
+    </ng-container>
+
+    <!-- specialisation Column -->
+    <ng-container matColumnDef="AllergyName">
+      <th mat-header-cell *matHeaderCellDef>AllergyName</th>
+      <td mat-cell *matCellDef="let element">{{ element.allergyName }}</td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="AllergyDescription">
+      <th mat-header-cell *matHeaderCellDef>AllergyDescription</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.allergyDescription }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="ClinicalInformation">
+      <th mat-header-cell *matHeaderCellDef>ClinicalInformation</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.clinicalInformation }}
+      </td>
+    </ng-container>
+
+    <!-- <ng-container matColumnDef="appointmentTime">
+      <th mat-header-cell *matHeaderCellDef>Time</th>
+      <td mat-cell *matCellDef="let element">{{ element?.allergy?.allergyType  }}</td>
+    </ng-container> -->
+
+    <!-- <ng-container matColumnDef="action">
+      <th mat-header-cell *matHeaderCellDef>Action</th>
+      <td mat-cell *matCellDef="let element">
+        <button
+          mat-icon-button
+          matTooltip="Click to Edit"
+          class="iconbutton"
+          color="primary"
+        >
+          <mat-icon
+            aria-label="Edit"
+            [state]="element"
+            routerLink="/scheduling/edit-appointment/{{
+              element.appointmentId
+            }}"
+            >edit</mat-icon
+          >
+          <mat-icon aria-label="Edit" (click)="navigateToUpdate(element.appointmentId)" >edit</mat-icon>
+        </button>
+
+        <button
+          mat-icon-button
+          matTooltip="Click to Delete"
+          class="iconbutton"
+          color="warn"
+          
+        >
+          <mat-icon aria-label="Delete">delete</mat-icon>
+        </button>
+      </td>
+    </ng-container> -->
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+    <!-- Row shown when there is no matching data. -->
+    <!-- <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell" colspan="4">
+        No data matching the filter "{{ input.value }}"
+      </td>
+    </tr> -->
+  </table>
+        
+  
+        
+      
+    </mat-step>
+    
+  </mat-stepper>
+  </div>
+  
+  <div [hidden]="section4" class="success">You have successfully submitted your details</div>
+  <router-outlet></router-outlet>
+  

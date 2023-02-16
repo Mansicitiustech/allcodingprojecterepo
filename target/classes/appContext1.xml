@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+<bean id="employee1" class="com.springcore.entity.Employee" scope="prototype" >
+
+<constructor-arg name="id" value="101"/>
+
+<constructor-arg name="firstName" value="vaidehi"/>
+<constructor-arg name="lastName" value="tomar"/>
+<constructor-arg name="salary" value="101000.9"/>
+</bean>
+
+<bean id="employee2" class="com.springcore.entity.Employee">
+
+<constructor-arg name="id" value="102"/>
+
+<constructor-arg name="firstName" value="neha"/>
+<constructor-arg name="lastName" value="sakle"/>
+<constructor-arg name="salary" value="201000.9"/>
+</bean>
+
+<!-- <bean id="user1" class="com.springcore.entity.User">
+<constructor-arg name="id" value="1"/>
+
+<constructor-arg name="firstName" value="rohit"/>
+<constructor-arg name="lastName" value="sharma"/>
+<constructor-arg name="email" value="rohit.sharma@gmail.com"/>
+
+</bean>-->
+
+<bean id="product1" class="com.springcore.entity.Product">
+<property name="id"><value>1</value></property>
+<property name="code"><value>123abc</value></property>
+<property name="price"><value>890.00</value></property>
+<property name="name"><value>iphone</value></property>
+<property name="availability"><value>true</value></property>
+
+</bean>
+<bean id="user3" class="com.springcore.entity.User">
+<constructor-arg name="id" value="1"/>
+
+<constructor-arg name="firstName" value="rohit"/>
+<constructor-arg name="lastName" value="sharma"/>
+<constructor-arg name="email" value="rohit.sharma@gmail.com"/>
+<constructor-arg name="product" ref="product1"/>
+</bean>
+
+<bean id="user4" class="com.springcore.entity.User">
+<constructor-arg index="0" value="1"/>
+
+<constructor-arg index="1" value="vini"/>
+<constructor-arg index="2" value="era"/>
+<constructor-arg index="3" value="vivi.eraa@gmail.com"/>
+<constructor-arg index="4" ref="product1"/>
+</bean>
+</beans>
